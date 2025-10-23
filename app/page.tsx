@@ -170,9 +170,9 @@ export default function Page() {
         </div>
         <div className="mt-8 grid md:grid-cols-3 gap-6">
           {[
-            { title: "Healthcare services sell‑side (Project Vitality)", bullets: ["CIM & model overhaul", "KPIs/bridges clarified", "Buyer list & IC pages"], tag: "Sell‑Side Advisory" },
-            { title: "SMCI special‑sits pitch support", bullets: ["Bear‑case sensitivities", "Reg & probe timeline exhibit", "Thesis one‑pager"], tag: "Public Markets / HF" },
-            { title: "University bootcamps (Howard & Morehouse)", bullets: ["SOWS syllabus", "LBO in 4 sessions", "Live comps & Q&A"], tag: "Education" },
+            { title: "Healthcare services sell‑side", bullets: ["CIM & model overhaul", "KPIs/bridges clarified", "Buyer list & IC pages"], tag: "Sell‑Side Advisory" },
+            { title: "SMCI special‑sits pitch support", bullets: ["Bull/bear‑case sensitivities", "Reg & probe timeline exhibit", "Thesis one‑pager"], tag: "Public Markets / HF" },
+            { title: "University bootcamps", bullets: ["SOWS syllabus", "LBO in 4 sessions", "Live comps & Q&A"], tag: "Education" },
           ].map((c, i) => (
             <Card key={i} className="p-6">
               <div className="text-xs mb-2 inline-flex items-center gap-2 rounded-full bg-zinc-100 px-2 py-1"> <Layers3 className="h-3 w-3"/> {c.tag}</div>
