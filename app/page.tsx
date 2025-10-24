@@ -74,40 +74,78 @@ export default function Page() {
       </header>
 
       <Section id="home" className="pt-16 pb-10 sm:pt-24 sm:pb-16">
-        <div className="grid lg:grid-cols-2 gap-10 items-center">
-          <div>
-            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-              <Badge>On‑demand modeling, deal coaching & interview mastery</Badge>
-              <h1 className="mt-5 text-4xl sm:text-5xl font-semibold leading-tight tracking-tight">
-                Train like a top‑bucket analyst. Execute like a seasoned VP.
-              </h1>
-              <p className="mt-4 text-zinc-600 text-lg">
-                Straight Outta Wall Street (SOWS) helps analysts, associates, and funds ship polished models, decks, and decisions—fast. Live 1:1 training, on‑call deal support, and elite interview prep designed for real transactions, not theory.
-              </p>
-              <div className="mt-6 flex flex-wrap items-center gap-4">
-                <CTAButton href="#contact">Start now</CTAButton>
-                <a href="#offerings" className="text-zinc-700 hover:text-zinc-900">See offerings</a>
-              </div>
-              <div className="mt-8 grid grid-cols-3 gap-6">
-                <Stat value="10h" label="to core fluency" />
-                <Stat value="100+" label="placements & promotions" />
-                <Stat value="$10B+" label="live‑deal experience advised" />
-              </div>
-            </motion.div>
-          </div>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}>
-            <Card className="p-4">
-              <div className="aspect-video w-full rounded-xl bg-gradient-to-br from-zinc-100 to-white grid place-content-center">
-                <PlayCircle className="h-14 w-14 opacity-70" />
-              </div>
-              <div className="p-4">
-                <h3 className="font-medium">How SOWS works (2:07)</h3>
-                <p className="text-sm text-zinc-600">A quick walkthrough of the training flow, live help, and deliverables you’ll actually ship.</p>
-              </div>
-            </Card>
-          </motion.div>
-        </div>
-      </Section>
+  <div className="max-w-5xl">
+    <h1 className="text-4xl sm:text-5xl font-semibold leading-tight tracking-tight">
+      Straight Outta Wall Street
+    </h1>
+    <p className="mt-3 text-zinc-600 text-lg">
+      Two ways to work with us—train for speed and clarity, or ship real work under real deadlines.
+    </p>
+  </div>
+
+  <div className="grid md:grid-cols-2 gap-6 mt-10">
+    {/* Left: Training */}
+    <motion.div
+      initial={{ opacity: 0, x: -24 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5 }}
+      className="rounded-2xl border border-zinc-200 bg-zinc-900 text-white p-7 shadow-sm"
+    >
+      <h2 className="text-3xl font-semibold">Train like a Top-Bucket Analyst</h2>
+      <p className="mt-3 text-zinc-300">
+        Live modeling bootcamps and 1:1 coaching that shortcut 100+ hours of self-study.
+        Clean builds, repeatable checks, and explanations that stick.
+      </p>
+      <ul className="mt-5 space-y-2 text-sm text-zinc-200">
+        <li className="flex gap-2"><span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" /> 3-statement → FCF without breakage</li>
+        <li className="flex gap-2"><span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" /> LBO from scratch + sensitivities</li>
+        <li className="flex gap-2"><span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" /> Interview drills & case walk-throughs</li>
+      </ul>
+      <div className="mt-6 flex gap-3">
+        <a href="#bootcamps" className="rounded-xl bg-white text-zinc-900 px-5 py-2 font-medium">Explore Training</a>
+        <a href="#contact" className="rounded-xl ring-1 ring-zinc-600 px-5 py-2">Book intro call</a>
+      </div>
+    </motion.div>
+
+    {/* Right: Advisory */}
+    <motion.div
+      initial={{ opacity: 0, x: 24 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5, delay: 0.05 }}
+      className="rounded-2xl border border-zinc-200 bg-white p-7 shadow-sm"
+    >
+      <h2 className="text-3xl font-semibold">Execute like a Seasoned VP</h2>
+      <p className="mt-3 text-zinc-700">
+        Shadow advisory and live deal execution—from IC memos to sell-side decks—done right, under pressure.
+      </p>
+      <ul className="mt-5 space-y-2 text-sm text-zinc-700">
+        <li className="flex gap-2"><span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" /> Rapid model reviews, tie-outs, sweeps</li>
+        <li className="flex gap-2"><span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" /> KPIs/exhibits: clean pages for partners/IC</li>
+        <li className="flex gap-2"><span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" /> Diligence prep, Q&A, timeline management</li>
+      </ul>
+      <div className="mt-6 flex gap-3">
+        <a href="#offerings" className="rounded-xl bg-zinc-900 text-white px-5 py-2 font-medium">Explore Advisory</a>
+        <a href="#contact" className="rounded-xl ring-1 ring-zinc-300 px-5 py-2">Talk to us</a>
+      </div>
+    </motion.div>
+  </div>
+
+  {/* Stats row (keep if you like) */}
+  <div className="mt-10 grid grid-cols-3 gap-6">
+    <div className="text-center">
+      <div className="text-3xl sm:text-4xl font-semibold tracking-tight">10h</div>
+      <div className="text-sm text-zinc-500 mt-1">to core fluency</div>
+    </div>
+    <div className="text-center">
+      <div className="text-3xl sm:text-4xl font-semibold tracking-tight">100+</div>
+      <div className="text-sm text-zinc-500 mt-1">placements & promotions</div>
+    </div>
+    <div className="text-center">
+      <div className="text-3xl sm:text-4xl font-semibold tracking-tight">$10B+</div>
+      <div className="text-sm text-zinc-500 mt-1">live-deal experience advised</div>
+    </div>
+  </div>
+</Section>
 
       <Section className="py-8">
         <div className="text-center text-xs uppercase tracking-wider text-zinc-500">Trusted by professionals from</div>
@@ -180,10 +218,10 @@ export default function Page() {
               <ul className="mt-3 space-y-2 text-sm text-zinc-600">
                 {c.bullets.map((b, bi) => (<li key={bi} className="flex gap-2"><div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-zinc-400" /> {b}</li>))}
               </ul>
-              <div className="mt-4 flex items-center justify-between text-sm">
-                <div className="flex items-center gap-2 text-emerald-700"><Gauge className="h-4 w-4"/> Measurable uplift</div>
-                <a href="#" className="text-zinc-700 hover:text-zinc-900 inline-flex items-center gap-1">View sample <ArrowRight className="h-4 w-4"/></a>
-              </div>
+             <div className="mt-4 flex items-center text-sm">
+  <div className="flex items-center gap-2 text-emerald-700"><Gauge className="h-4 w-4"/> Measurable uplift</div>
+</div>
+
             </Card>
           ))}
         </div>
