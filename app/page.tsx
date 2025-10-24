@@ -254,29 +254,75 @@ export default function Page() {
         </div>
       </Section>
 
-      <Section id="testimonials" className="py-14">
-        <div className="max-w-3xl">
-          <h2 className="text-3xl font-semibold tracking-tight">Proof, not promises</h2>
-          <p className="mt-2 text-zinc-600">Real outcomes from analysts, associates, and PMs who shipped with SOWS.</p>
+     <div className="mt-8 grid md:grid-cols-3 gap-6">
+  {[
+    {
+      quote:
+        "No fluff, just clear logic and repeatable structure. I left with frameworks I can actually use, not just templates to copy.",
+      author: "Client A — Private Credit (NYC) — 08/13/25",
+      role: "JD/MBA lateral into private credit",
+      full: `Came in to build skills across the 3 statements, modeling, and interview prep. We built from the ground up:
+
+• Three-statement integration so assumptions flow cleanly from revenue to cash without breakage.
+• LBO from scratch — sources & uses, debt schedules, sweeps, sensitivities — fast to update and easy to audit.
+• Returns waterfall with tiered IRR hurdles and changing splits that tie out every time.
+• Focused interview prep with technical drills and case walk-throughs to explain models under time pressure.
+
+Straightforward approach: no fluff, just logic and repeatable structure. Accessible, patient, and practical. Left with frameworks I still use (not templates to copy). 10/10.`,
+      seed: "clientA"
+    },
+    {
+      quote: "This guy is a machine — helped me land my Director role.",
+      author: "Client B — Investment Banking (NYC) — 10/19/24",
+      role: "VP → Director in investment banking",
+      full: `Used SOWS during a lateral process. Support covered modeling, valuation, case study walkthroughs, and detailed interview prep.
+
+Got specific guidance on firm research, expected questions, and what to ask back. Thorough, professional, and responsive — made himself available when needed. Highly recommend for anyone leveling up to leadership.`,
+      seed: "clientB"
+    },
+    {
+      quote: "Wealth of knowledge and experience. Results speak for themselves.",
+      author: "Client C — Bulge-Bracket IB (NYC) — 02/27/23",
+      role: "Finance student → Bulge-bracket analyst",
+      full: `Worked together from pre-internship through full-time offer at a bulge-bracket bank in NYC. Engaging teaching — not rote memorization. Excel wizard; breaks down complex topics clearly and patiently.
+
+Outcome: secured internship → full-time, and now outperforming peers thanks to drills and frameworks. Outstanding coach with real results.`,
+      seed: "clientC"
+    }
+  ].map((t, i) => (
+    <Card key={i} className="p-6">
+      <div className="flex items-center gap-3">
+        <img
+          src={`https://picsum.photos/seed/${t.seed}/96/96`}
+          alt="avatar"
+          className="h-12 w-12 rounded-full object-cover"
+        />
+        <div>
+          <div className="font-medium">{t.author}</div>
+          {t.role && (
+            <span className="mt-1 inline-block text-[11px] rounded-full bg-gray-100 px-2 py-1 text-gray-700">
+              {t.role}
+            </span>
+          )}
         </div>
-        <div className="mt-8 grid md:grid-cols-3 gap-6">
-          {[1,2,3].map((i) => (
-            <Card key={i} className="p-6">
-              <div className="flex items-center gap-3">
-                <img src={`https://picsum.photos/seed/sows${i}/96/96`} alt="avatar" className="h-12 w-12 rounded-full object-cover"/>
-                <div>
-                  <div className="font-medium">Placed Associate</div>
-                  <div className="text-xs text-zinc-600">Middle‑Market PE</div>
-                </div>
-              </div>
-              <p className="mt-4 text-sm text-zinc-700 leading-6">“The difference was night and day. My LBO and IC answers finally sounded like I’d actually done the job. Offer landed.”</p>
-              <div className="mt-3 flex gap-0.5 text-amber-500">
-                {Array.from({ length: 5 }).map((_, si) => <Star key={si} className="h-4 w-4 fill-current" />)}
-              </div>
-            </Card>
-          ))}
-        </div>
-      </Section>
+      </div>
+
+      <p className="mt-4 text-sm text-zinc-700 leading-6">“{t.quote}”</p>
+
+      <details className="mt-3">
+        <summary className="text-sm text-zinc-800 cursor-pointer">Read full story</summary>
+        <p className="mt-2 text-sm text-zinc-600 whitespace-pre-line">{t.full}</p>
+      </details>
+
+      <div className="mt-3 flex gap-0.5 text-amber-500">
+        {Array.from({ length: 5 }).map((_, si) => (
+          <Star key={si} className="h-4 w-4 fill-current" />
+        ))}
+      </div>
+    </Card>
+  ))}
+</div>
+
 
       <Section id="about" className="py-14">
         <div className="grid md:grid-cols-2 gap-10 items-center">
