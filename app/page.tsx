@@ -81,7 +81,7 @@ const TESTIMONIALS = [
 Straightforward approach: no fluff, just logic and repeatable structure. Accessible, patient, and practical. Left with frameworks I still use (not templates to copy). 10/10.`,
   },
   {
-    role: "VP → Director (IB)",
+    role: "VP (IB) → Director (PE)",
     who: "Client B — NYC — 10/19/24",
     quote:
       "This guy is a machine — helped me land my Director role. Thorough, professional, and responsive.",
@@ -181,7 +181,7 @@ export default function Component() {
       <Section className="py-8">
         <div className="text-center text-xs uppercase tracking-wider text-zinc-500">Trusted by professionals from</div>
         <div className="mt-5 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-6 opacity-80">
-          {["Crestone Advisors","Howard SMIF","Morehouse SMIF","Axial","Wharton","Private Equity Funds"].map((name, i) => (
+          {["Goldman Sachs","Bank of America","Citigroup","Wharton","Columbia","PE & HF"].map((name, i) => (
             <div key={i} className="h-10 rounded-md bg-white border border-zinc-200 grid place-content-center text-[11px] text-zinc-600">{name}</div>
           ))}
         </div>
@@ -196,7 +196,7 @@ export default function Component() {
         <div className="mt-8 grid md:grid-cols-3 gap-6">
           <Card className="p-6">
             <div className="flex items-center gap-3"><BookOpen className="h-5 w-5" /><h3 className="font-medium">1:1 Modeling Bootcamps</h3></div>
-            <p className="mt-3 text-sm text-zinc-600">In ~10 hours become fluent in core IB/PE models. We build, you drive. Focus areas: LBOs, 3‑statement, M&A, 13‑week CF, SaaS bridges, debt schedules.</p>
+            <p className="mt-3 text-sm text-zinc-600">In ~10 hours become fluent in core IB/PE models. We build, you drive. Focus areas: LBOs, 3‑statement, M&A, DCF, SaaS bridges, debt schedules.</p>
             <ul className="mt-4 space-y-2 text-sm">
               {["Hands‑on, live screen‑share drills","SOWS templates & checklists included","Pace matched to you—no filler"].map((t, i) => (
                 <li key={i} className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-emerald-600" />{t}</li>
@@ -230,7 +230,7 @@ export default function Component() {
         <div className="mt-8 grid md:grid-cols-3 gap-6">
           {[
             { title: "Healthcare services sell‑side", bullets: ["CIM & model overhaul", "KPIs/bridges clarified", "Buyer list & IC pages"], tag: "Sell‑Side Advisory" },
-            { title: "SMCI special‑sits pitch support", bullets: ["Bull/bear‑case sensitivities", "Reg & probe timeline exhibit", "Thesis one‑pager"], tag: "Public Markets / HF" },
+            { title: "Special‑sits pitch support", bullets: ["Bull/bear‑case sensitivities", "Reg & probe timeline exhibit", "Thesis one‑pager"], tag: "Public Markets / HF" },
             { title: "University bootcamps", bullets: ["SOWS syllabus", "LBO in 4 sessions", "Live comps & Q&A"], tag: "Education" },
           ].map((c, i) => (
             <Card key={i} className="p-6">
@@ -251,7 +251,7 @@ export default function Component() {
         <div className="mt-8 grid md:grid-cols-2 gap-6">
           <Card className="p-6">
             <h3 className="font-medium flex items-center gap-2"><Workflow className="h-5 w-5"/> Core IB/PE Modeling (10 hours)</h3>
-            <ul className="mt-3 space-y-2 text-sm text-zinc-600">{["3‑statement & cash flow mechanics","LBO with waterfalls, PIK, & sensitivities","M&A accretion/dilution & purchase accounting","SaaS metrics, ARR bridges, cohort views"].map((b, i) => <li key={i} className="flex gap-2"><div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-zinc-400"/> {b}</li>)}</ul>
+            <ul className="mt-3 space-y-2 text-sm text-zinc-600">{["3‑statement & cash flow mechanics","LBO with waterfalls, PIK, & sensitivities","M&A accretion/dilution & purchase accounting","Full valuation: DCF, WACC, Comps"].map((b, i) => <li key={i} className="flex gap-2"><div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-zinc-400"/> {b}</li>)}</ul>
             <div className="mt-4 flex items-center justify-between"><div className="text-sm text-zinc-600">From $399/hr • Volume discounts</div><CTAButton href="#contact">Get syllabus</CTAButton></div>
           </Card>
           <Card className="p-6">
@@ -307,7 +307,7 @@ export default function Component() {
                 <div className="flex items-center gap-2"><Shield className="h-4 w-4"/> NDA‑friendly, discrete support</div>
               </div>
               <div className="mt-6 flex items-center gap-4 text-sm">
-                <a href="mailto:hello@straightouttawallstreet.com" className="inline-flex items-center gap-2 underline decoration-dotted"><Mail className="h-4 w-4"/> hello@straightouttawallstreet.com</a>
+                <a href="mailto:joe@straightouttawallstreet.com" className="inline-flex items-center gap-2 underline decoration-dotted"><Mail className="h-4 w-4"/> joe@straightouttawallstreet.com</a>
                 <a href="https://www.linkedin.com" className="inline-flex items-center gap-2 underline decoration-dotted"><Linkedin className="h-4 w-4"/> LinkedIn</a>
               </div>
             </div>
@@ -343,7 +343,7 @@ export default function Component() {
           <div>
             <div className="font-medium">Contact</div>
             <ul className="mt-3 space-y-2 text-zinc-600">
-              <li className="flex items-center gap-2"><Mail className="h-4 w-4"/> hello@straightouttawallstreet.com</li>
+              <li className="flex items-center gap-2"><Mail className="h-4 w-4"/> joe@straightouttawallstreet.com</li>
               <li className="flex items-center gap-2"><MapPin className="h-4 w-4"/> Puerto Rico • New York</li>
             </ul>
           </div>
