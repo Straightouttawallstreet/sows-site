@@ -20,7 +20,13 @@ import {
   Users,
 } from "lucide-react";
 
-const Section = ({ id, children, className = "" }) => (
+const Section = ({ id, children, className = "" }: { id?: string; children: React.ReactNode; className?: string }) => (
+
+  <section id={id} className={`max-w-7xl mx-auto px-6 sm:px-8 ${className}`}>
+    {children}
+  </section>
+);
+
   <section id={id} className={`max-w-7xl mx-auto px-6 sm:px-8 ${className}`}>
     {children}
   </section>
