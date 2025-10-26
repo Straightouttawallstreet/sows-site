@@ -344,7 +344,7 @@ export default function Component() {
             <div className="font-medium">Contact</div>
             <ul className="mt-3 space-y-2 text-zinc-600">
               <li className="flex items-center gap-2"><Mail className="h-4 w-4"/> joe@straightouttawallstreet.com</li>
-              <li className="flex items-center gap-2"><MapPin className="h-4 w-4"/> Puerto Rico • New York</li>
+              <li className="flex items-center gap-2"><MapPin className="h-4 w-4"/> New York • Miami • Puerto Rico</li>
             </ul>
           </div>
         </Section>
