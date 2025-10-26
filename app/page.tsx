@@ -20,17 +20,20 @@ import {
   Users,
 } from "lucide-react";
 
-const Section = ({ id, children, className = "" }: { id?: string; children: React.ReactNode; className?: string }) => (
+type SectionProps = {
+  id?: string;
+  children: React.ReactNode;
+  className?: string;
+};
 
-  <section id={id} className={`max-w-7xl mx-auto px-6 sm:px-8 ${className}`}>
-    {children}
-  </section>
-);
+function Section({ id, children, className = "" }: SectionProps) {
+  return (
+    <section id={id} className={`max-w-7xl mx-auto px-6 sm:px-8 ${className}`}>
+      {children}
+    </section>
+  );
+}
 
-  <section id={id} className={`max-w-7xl mx-auto px-6 sm:px-8 ${className}`}>
-    {children}
-  </section>
-);
 
 const Badge = ({ children }) => (
   <span className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white/70 px-3 py-1 text-sm shadow-sm backdrop-blur">
