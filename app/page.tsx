@@ -98,11 +98,15 @@ export default function Component() {
       {/* Header */}
       <header className="sticky top-0 z-40 bg-white/70 backdrop-blur border-b border-zinc-200">
         <Section className="flex h-16 items-center justify-between">
-          <a href="#home" className="flex items-center gap-2 font-semibold tracking-tight">
-            {/* Your logo placed in /public as sows-logo.png */}
-            <img src="/sows-logo.png" alt="Straight Outta Wall Street" className="h-7 w-auto" />
-            <span className="sr-only">Straight Outta Wall Street</span>
-          </a>
+         <a href="#home" className="flex items-center gap-2 font-semibold tracking-tight">
+  <img
+    src="/sows-logo.png"
+    alt="Straight Outta Wall Street"
+    className="h-7 w-auto"
+  />
+  <span className="sr-only">Straight Outta Wall Street</span>
+</a>
+
           <nav className="hidden md:flex items-center gap-8 text-sm">
             <a href="#offerings" className="hover:text-zinc-900 text-zinc-600">Offerings</a>
             <a href="#casework" className="hover:text-zinc-900 text-zinc-600">Case Work</a>
