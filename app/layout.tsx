@@ -2,6 +2,7 @@
 import "./globals.css";
 import { useEffect } from "react";
 import posthog from "posthog-js";
+import { Analytics } from "@vercel/analytics/react";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   useEffect(() => {
@@ -22,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           content="On-demand modeling, deal coaching & interview mastery."
         />
       </head>
-      <body>{children}</body>
+      <body>{children}<Analytics /></body>
     </html>
   );
 }
