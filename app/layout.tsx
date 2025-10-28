@@ -1,12 +1,9 @@
 "use client";
-import { Analytics } from "@vercel/analytics/react";
+
 import "./globals.css";
-import { useEffect } from "react";
 import { Analytics } from "@vercel/analytics/react";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-
-
   return (
     <html lang="en">
       <head>
@@ -16,7 +13,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           content="On-demand modeling, deal coaching & interview mastery."
         />
       </head>
-      <body>{children}<Analytics /></body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
