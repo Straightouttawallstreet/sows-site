@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/joseph-ali", "destination": "/", "permanent": true },
+    { "source": "/business-advisory", "destination": "/", "permanent": true }
+  ]
+}
