@@ -69,39 +69,102 @@ const Stat = ({ value, label }) => (
 const TESTIMONIALS = [
   {
     role: "JD/MBA → Private Credit",
-    who: "Client A — NYC — 08/13/25",
-    quote:
-      "No fluff, just clear logic and repeatable structure. I left with frameworks I can actually use, not just templates to copy.",
-    full: `Came in to build skills across the 3 statements, modeling, and interview prep. We built from the ground up:
-• Three-statement integration so assumptions flow cleanly from revenue to cash without breakage.
-• LBO from scratch — sources & uses, debt schedules, sweeps, sensitivities — fast to update and easy to audit.
-• Returns waterfall with tiered IRR hurdles and changing splits that tie out every time.
-• Focused interview prep with technical drills and case walk-throughs to explain models under time pressure.
-
-Straightforward approach: no fluff, just logic and repeatable structure. Accessible, patient, and practical. Left with frameworks I still use (not templates to copy). 10/10.`,
+    who: "Nick — New York, NY — 08/13/25",
+    quote: "No fluff — clear logic and repeatable structure. Left with frameworks I can actually use.",
+    full: `Came in for 3-statement fluency, LBO from scratch, and interview prep. Built a clean, auditable model (S&U, debt schedules, sweeps, sensitivities) and a returns waterfall with tiered IRR hurdles and changing splits that ties out every time. Explanations stick under time pressure. Patient, practical, and available. 10/10.`,
   },
   {
     role: "VP (IB) → Director (PE)",
-    who: "Client B — NYC — 10/19/24",
-    quote:
-      "This guy is a machine — helped me land my Director role. Thorough, professional, and responsive.",
-    full: `Used SOWS during a lateral process. Support covered modeling, valuation, case study walkthroughs, and detailed interview prep.
-Got specific guidance on firm research, expected questions, and what to ask back. Highly recommend for anyone leveling up to leadership.`,
+    who: "Peter — New York, NY — 10/19/24",
+    quote: "Relentless support under real timelines. Thorough, professional, responsive.",
+    full: `Used SOWS during a lateral process: modeling, valuation, case study walkthroughs, and detailed interview prep. Clear research plans, expected Q&A, and what to ask back. Result: landed the role. Highly recommend for leveling up to leadership.`,
   },
   {
     role: "Student → Bulge-Bracket IB",
-    who: "Client C — NYC — 02/27/23",
-    quote: "Wealth of knowledge and experience. Results speak for themselves.",
-    full: `Worked together from pre-internship through full-time offer at a bulge-bracket bank. Engaging teaching — not rote memorization.
-Breaks down complex topics clearly and patiently. Outcome: internship → full-time, now outperforming peers thanks to drills and frameworks.`,
+    who: "Client — New York, NY — 02/27/23",
+    quote: "Wealth of knowledge. Results speak for themselves.",
+    full: `From pre-internship to full-time offer at a bulge-bracket bank. No rote memorization—logic and reps. Complex topics broken down clearly; outcome: internship → full-time, outperforming peers thanks to drills and frameworks.`,
+  },
+  {
+    role: "Associate → Senior Associate",
+    who: "Alex — New York, NY — 03/27/25",
+    quote: "Transformed my understanding of modeling and analysis.",
+    full: `Logic-first approach—not just formulas. Step-by-step docs, templates, hands-on drills. Covered 3-statement, cash flow, LBO, credit analysis, M&A—clarity and depth. Real-world insight + direct accessibility. Skills improved and career advanced.`,
+  },
+  {
+    role: "Analyst → Associate",
+    who: "Olivier — London, UK — 11/08/24",
+    quote: "The only finance resource you’ll ever need.",
+    full: `Profound understanding across sectors and structures. Patient, methodical, and practical. Creative solutions to tricky modeling issues; ensures true comprehension. A go-to partner for getting work over the line.`,
+  },
+  {
+    role: "Career Switcher → IB Offer",
+    who: "Jason — New York, NY — 09/18/23",
+    quote: "Mentorship that changes outcomes.",
+    full: `Interview prep that puts you steps ahead—insightful frameworks, targeted drills, and honest feedback. Left the process confident and prepared. An ongoing mentor who cares about the result.`,
+  },
+  {
+    role: "Investor → Sharper Process",
+    who: "Georgia — Los Angeles, CA — 07/21/23",
+    quote: "Knowledgeable and perceptive—improved my investing thought process.",
+    full: `Pinpointed weak points quickly and fixed them with focused reps. Background spans multiple angles—able to field any question and give a practical answer.`,
+  },
+  {
+    role: "Analyst → Top-Bucket",
+    who: "Constantine — Chicago, IL — 02/27/23",
+    quote: "Engaging teaching; concepts finally click.",
+    full: `Fluent walkthroughs of 3-statement, DCF, LBO, M&A, and Excel speed. Patient and precise—hard topics become intuitive. Substantial improvement in both speed and confidence.`,
+  },
+  {
+    role: "Associate (PE) — Case Study",
+    who: "Cameron — New York, NY — 10/03/22",
+    quote: "Advanced modeling tactics and better positioning in memos.",
+    full: `Reviewed two PE cases end-to-end. Clarified advanced modeling moves and reframed write-ups for a cleaner investment story. Very helpful—would use again.`,
+  },
+  {
+    role: "MBA → IB Internship → Full-Time",
+    who: "Anna — Los Angeles, CA — 05/09/22",
+    quote: "Aced technicals and modeling tests—multiple offers.",
+    full: `Built a solid foundation first, then advanced reps. Confusing topics turned simple. Practice problems plus clear feedback. Multiple offers from great firms.`,
+  },
+  {
+    role: "Entrepreneur → Finance Fluency",
+    who: "Phillip — Syracuse, NY — 09/29/21",
+    quote: "Gained a framework I can keep iterating on.",
+    full: `Walked out with a tailored, documented model that mirrors the business and a roadmap to extend it. Confidence to maintain and scale the build independently.`,
+  },
+  {
+    role: "Career Accelerator",
+    who: "Dan — Los Angeles, CA — 08/30/21",
+    quote: "Makes it all click—fast. High-energy, high-impact training.",
+    full: `Years of coursework never unlocked true fluency—this did. Clear logic, practical reps, and precision under pressure. Expect to move quickly and retain it.`,
+  },
+  {
+    role: "PE Candidate — Live Build",
+    who: "Omar — Atlanta, GA — 06/21/21",
+    quote: "Exceptionally diligent—breaks each step down clearly.",
+    full: `Worked through an LBO model line-by-line. No hand-waving, just clean mechanics. Left with something I could update and defend.`,
+  },
+  {
+    role: "Analyst — Skill Uplift",
+    who: "Diana — Chicago, IL — 04/18/21",
+    quote: "Sharp, analytical, and generous with detail.",
+    full: `Expanded modeling skills materially; answers are specific, practical, and timely. Went above and beyond to ensure I truly grasped the tricky pieces.`,
+  },
+  {
+    role: "MBA Recruiting → IB Offers",
+    who: "Anonymous — Top-10 MBA — 02/01/22",
+    quote: "Thorough, patient, and makes complex topics simple.",
+    full: `Mocked technicals, refined answers, and drilled live until crisp. Flexible scheduling and genuine investment in outcomes. Would recommend to anyone needing a technical edge.`,
+  },
+  {
+    role: "Professional — Credit & DCF",
+    who: "Bridget — Naples, FL — 03/04/22",
+    quote: "Excellent finance coach—concise and effective.",
+    full: `Explains terminology precisely and ties it to real modeling moves. Helpful and pragmatic—immediate desk impact.`,
   },
 ];
 
-export default function Component() {
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    alert("Thanks! We'll get back to you shortly.");
-  };
 
   return (
     <div className="bg-[radial-gradient(60%_60%_at_10%_-10%,#e7e7ff_0%,transparent_70%),radial-gradient(60%_60%_at_90%_-20%,#ffe9e7_0%,transparent_70%)] text-zinc-900">
@@ -136,6 +199,33 @@ export default function Component() {
         <div className="max-w-5xl">
           <h1 className="text-4xl sm:text-5xl font-semibold leading-tight tracking-tight">Straight Outta Wall Street</h1>
           <p className="mt-3 text-zinc-600 text-lg">Two ways to work with us—train for speed and clarity, or ship real work under real deadlines.</p>
+          {/* Quick Quote Carousel */}
+<motion.div
+  className="mt-4 text-sm text-zinc-500"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 1.0 }}
+>
+  <div className="overflow-hidden relative h-6">
+    <motion.div
+      key={Math.floor(Date.now() / 5000)} // changes every 5 seconds
+      initial={{ y: 20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      exit={{ y: -20, opacity: 0 }}
+      transition={{ duration: 0.6 }}
+      className="absolute w-full"
+    >
+      {[
+        "“No fluff — clear logic and repeatable structure.”",
+        "“Transformed my understanding of modeling and analysis.”",
+        "“Relentless support that gets real results.”",
+        "“The only finance resource you’ll ever need.”",
+        "“Clarity, precision, and real-world execution.”",
+      ][Math.floor((Date.now() / 5000) % 5)]}
+    </motion.div>
+  </div>
+</motion.div>
+
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 mt-10">
@@ -263,24 +353,77 @@ export default function Component() {
       </Section>
 
       {/* Testimonials */}
-      <Section id="testimonials" className="py-14">
-        <div className="max-w-3xl"><h2 className="text-3xl font-semibold tracking-tight">Proof, not promises</h2><p className="mt-2 text-zinc-600">Real outcomes from analysts, associates, and operators who shipped with SOWS.</p></div>
-        <motion.div className="mt-8 grid md:grid-cols-3 gap-6" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={{ hidden: { opacity: 1 }, show: { transition: { staggerChildren: 0.12 } } }}>
-          {TESTIMONIALS.map((t, i) => (
-            <motion.div key={i} variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }}>
-              <Card className="p-6 h-full">
-                <div className="flex items-center justify-between">
-                  <span className="inline-flex items-center text-[11px] rounded-full bg-zinc-100 px-2 py-1 text-zinc-700">{t.role}</span>
-                  <div className="flex gap-0.5 text-amber-500">{Array.from({ length: 5 }).map((_, si) => (<Star key={si} className="h-3.5 w-3.5 fill-current" />))}</div>
-                </div>
-                <div className="mt-2 text-xs text-zinc-500">{t.who}</div>
-                <p className="mt-4 text-sm text-zinc-800 leading-6">“{t.quote}”</p>
-                <details className="mt-3"><summary className="text-sm text-zinc-800 cursor-pointer">Read full story</summary><p className="mt-2 text-sm text-zinc-600 whitespace-pre-line">{t.full}</p></details>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
-      </Section>
+<Section id="testimonials" className="py-14">
+  <div className="max-w-3xl">
+    <h2 className="text-3xl font-semibold tracking-tight">Proof, not promises</h2>
+    <p className="mt-2 text-zinc-600">Real outcomes from analysts, associates, and operators who shipped with SOWS.</p>
+  </div>
+
+  {/* Show first 3 testimonials, then expandable grid */}
+  <motion.div
+    className="mt-8 grid md:grid-cols-3 gap-6"
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: true, amount: 0.2 }}
+    variants={{
+      hidden: { opacity: 1 },
+      show: { transition: { staggerChildren: 0.12 } },
+    }}
+  >
+    {TESTIMONIALS.slice(0, 3).map((t, i) => (
+      <motion.div key={i} variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }}>
+        <Card className="p-6 h-full">
+          <div className="flex items-center justify-between">
+            <span className="inline-flex items-center text-[11px] rounded-full bg-zinc-100 px-2 py-1 text-zinc-700">
+              {t.role}
+            </span>
+            <div className="flex gap-0.5 text-amber-500">
+              {Array.from({ length: 5 }).map((_, si) => (
+                <Star key={si} className="h-3.5 w-3.5 fill-current" />
+              ))}
+            </div>
+          </div>
+          <div className="mt-2 text-xs text-zinc-500">{t.who}</div>
+          <p className="mt-4 text-sm text-zinc-800 leading-6">“{t.quote}”</p>
+          <details className="mt-3">
+            <summary className="text-sm text-zinc-800 cursor-pointer">Read full story</summary>
+            <p className="mt-2 text-sm text-zinc-600 whitespace-pre-line">{t.full}</p>
+          </details>
+        </Card>
+      </motion.div>
+    ))}
+  </motion.div>
+
+  {/* Expandable Section */}
+  <details className="mt-10">
+    <summary className="cursor-pointer rounded-xl bg-zinc-900 text-white px-5 py-3 text-center text-sm font-medium hover:bg-zinc-800">
+      Show more reviews
+    </summary>
+    <div className="mt-6 grid md:grid-cols-3 gap-6">
+      {TESTIMONIALS.slice(3).map((t, i) => (
+        <Card key={i} className="p-6 h-full">
+          <div className="flex items-center justify-between">
+            <span className="inline-flex items-center text-[11px] rounded-full bg-zinc-100 px-2 py-1 text-zinc-700">
+              {t.role}
+            </span>
+            <div className="flex gap-0.5 text-amber-500">
+              {Array.from({ length: 5 }).map((_, si) => (
+                <Star key={si} className="h-3.5 w-3.5 fill-current" />
+              ))}
+            </div>
+          </div>
+          <div className="mt-2 text-xs text-zinc-500">{t.who}</div>
+          <p className="mt-4 text-sm text-zinc-800 leading-6">“{t.quote}”</p>
+          <details className="mt-3">
+            <summary className="text-sm text-zinc-800 cursor-pointer">Read full story</summary>
+            <p className="mt-2 text-sm text-zinc-600 whitespace-pre-line">{t.full}</p>
+          </details>
+        </Card>
+      ))}
+    </div>
+  </details>
+</Section>
+
 
       {/* About */}
       <Section id="about" className="py-14">
