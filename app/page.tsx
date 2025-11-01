@@ -470,39 +470,47 @@ export default function Component() {
       </Section>
 
       {/* About (portrait image with top focus; no card wrapper) */}
-      <Section id="about" className="py-14">
-        <div className="grid md:grid-cols-2 gap-10 items-center">
-          <div>
-            <Badge>Built by a practicing banker</Badge>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight">Built for the desk, not the classroom</h2>
-            <p className="mt-3 text-zinc-700 leading-7">
-              Straight Outta Wall Street is a boutique training and advisory partner run by a practicing banker.
-              We live in the models and the memos—then teach you to do the same. Every session is live, discrete,
-              and geared to ship real work under real deadlines. You leave with frameworks you can reuse, not just
-              templates to copy.
-            </p>
-            <ul className="mt-4 space-y-2 text-sm text-zinc-700">
-              <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> MD-level coaching — no juniors, no filler</li>
-              <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> 10h to core fluency in 3-statement, LBO, case execution</li>
-              <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> Live reps, checks, and tie-outs that never break</li>
-              <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> Partner-clean exhibits and IC-ready narrative</li>
-              <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> Templates you own; minute-accurate, round-down billing</li>
-            </ul>
-          </div>
+     <Section id="about" className="py-14">
+  <div className="grid md:grid-cols-2 gap-10 items-center">
+    <div>
+      <Badge>Built by a practicing banker</Badge>
+      <h2 className="mt-3 text-3xl font-semibold tracking-tight">Built for the desk, not the classroom</h2>
+      <p className="mt-3 text-zinc-700 leading-7">
+        Straight Outta Wall Street is a boutique training and advisory partner led by a practicing banker.
+        We live in the models and the memos—then teach you to do the same. Sessions are live, discrete, and
+        built to ship real work under real deadlines. You leave with frameworks you can reuse—not templates to copy.
+      </p>
+      <ul className="mt-4 space-y-2 text-sm text-zinc-700">
+        <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> MD-level coaching — no juniors, no filler</li>
+        <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> 10h to core fluency in 3-statement, LBO, case execution</li>
+        <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> Live reps, checks, and tie-outs that never break</li>
+        <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> Partner-clean exhibits and IC-ready narrative</li>
+        <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> Templates you own; minute-accurate, round-down billing</li>
+      </ul>
+      <div className="mt-5">
+        <a href="#contact" className="text-sm underline decoration-dotted hover:text-zinc-900">
+          Ask for a sample syllabus →
+        </a>
+      </div>
+    </div>
 
-          {/* Founder photo */}
-          <div className="flex justify-center md:justify-end">
-            <div className="relative w-3/4 md:w-2/3 max-w-sm aspect-[4/5]">
-              <img
-                src="/headshot.jpg"
-                alt="Founder of Straight Outta Wall Street"
-                className="absolute inset-0 h-full w-full object-cover object-top rounded-2xl"
-                loading="eager"
-              />
-            </div>
-          </div>
+    {/* Founder photo with name chip */}
+    <div className="flex justify-center md:justify-end">
+      <div className="relative w-3/4 md:w-2/3 max-w-sm aspect-[4/5]">
+        <img
+          src="/headshot.jpg"
+          alt="Joseph Ali, Founder — Straight Outta Wall Street"
+          className="absolute inset-0 h-full w-full object-cover object-top rounded-2xl"
+          loading="eager"
+        />
+        <div className="absolute left-3 bottom-3 rounded-full bg-white/85 backdrop-blur px-3 py-1 text-xs text-zinc-800 shadow">
+          Joseph Ali — Founder
         </div>
-      </Section>
+      </div>
+    </div>
+  </div>
+</Section>
+
 
       {/* Contact */}
       <Section id="contact" className="py-16">
