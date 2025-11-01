@@ -524,8 +524,7 @@ export default function Component() {
         </details>
       </Section>
 
-      {/* About (fixed aspect + top focus) */}
-{/* About (balanced image size) */}
+     {/* About (no Card wrapper, no ghost outline) */}
 <Section id="about" className="py-14">
   <div className="grid md:grid-cols-2 gap-10 items-center">
     <div>
@@ -545,19 +544,20 @@ export default function Component() {
       </ul>
     </div>
 
-    {/* Founder photo – smaller, portrait, centered */}
-    <Card className="overflow-hidden flex justify-center md:justify-end">
-      <div className="relative w-3/4 md:w-2/3 max-w-sm aspect-[4/5] rounded-2xl shadow-sm">
+    {/* Founder photo */}
+    <div className="flex justify-center md:justify-end">
+      <div className="relative w-3/4 md:w-2/3 max-w-sm aspect-[4/5]">
         <img
-          src="/headshot.jpg"
+          src="/032-O9ccK7pZU_s.jpeg"
           alt="Founder of Straight Outta Wall Street"
           className="absolute inset-0 h-full w-full object-cover object-top rounded-2xl"
           loading="eager"
         />
       </div>
-    </Card>
+    </div>
   </div>
 </Section>
+
 
 
 
