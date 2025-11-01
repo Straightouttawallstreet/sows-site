@@ -524,41 +524,41 @@ export default function Component() {
         </details>
       </Section>
 
-      {/* About (rewritten) */}
-      <Section id="about" className="py-14">
-        <div className="grid md:grid-cols-2 gap-10 items-center">
-          <div>
-            <h2 className="text-3xl font-semibold tracking-tight">Built for the desk, not the classroom</h2>
-            <p className="mt-3 text-zinc-700 leading-7">
-              Straight Outta Wall Street is a boutique training and advisory partner run by a practicing
-              banker. We live in the models and the memos—then teach you to do the same. Every session
-              is live, discrete, and geared to ship real work under real deadlines. You leave with
-              frameworks you can reuse, not just templates to copy.
-            </p>
-            <ul className="mt-4 space-y-2 text-sm text-zinc-700">
-              <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> MD-level coaching — no juniors, no filler</li>
-              <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> 10h to core fluency in 3-statement, LBO, case execution</li>
-              <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> Live reps, checks, and tie-outs that never break</li>
-              <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> Partner-clean exhibits and IC-ready narrative</li>
-              <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> Templates you own; minute-accurate, round-down billing</li>
-            </ul>
-          </div>
+      {/* About (fixed aspect + top focus) */}
+<Section id="about" className="py-14">
+  <div className="grid md:grid-cols-2 gap-10 items-center">
+    <div>
+      <h2 className="text-3xl font-semibold tracking-tight">Built for the desk, not the classroom</h2>
+      <p className="mt-3 text-zinc-700 leading-7">
+        Straight Outta Wall Street is a boutique training and advisory partner run by a practicing
+        banker. We live in the models and the memos—then teach you to do the same. Every session
+        is live, discrete, and geared to ship real work under real deadlines. You leave with
+        frameworks you can reuse, not just templates to copy.
+      </p>
+      <ul className="mt-4 space-y-2 text-sm text-zinc-700">
+        <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> MD-level coaching — no juniors, no filler</li>
+        <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> 10h to core fluency in 3-statement, LBO, case execution</li>
+        <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> Live reps, checks, and tie-outs that never break</li>
+        <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> Partner-clean exhibits and IC-ready narrative</li>
+        <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> Templates you own; minute-accurate, round-down billing</li>
+      </ul>
+    </div>
 
-          {/* Founder photo */}
-          <Card className="overflow-hidden">
-            <div className="relative w-full aspect-[4/3]">
-              <Image
-                src="/headshot.jpg"  // if you rename to /headshot.jpg, update this path
-                alt="Founder of Straight Outta Wall Street"
-                fill
-                className="object-cover"
-                priority
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </div>
-          </Card>
-        </div>
-      </Section>
+    {/* Founder photo — portrait aspect + top anchor */}
+    <Card className="overflow-hidden">
+      <div className="relative w-full aspect-[4/5]"> {/* was aspect-[4/3] */}
+        <Image
+          src="/032-O9ccK7pZU_s.jpeg"
+          alt="Founder of Straight Outta Wall Street"
+          fill
+          className="object-cover object-top"       {/* add object-top to keep hair in frame */}
+          priority
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
+      </div>
+    </Card>
+  </div>
+</Section>
 
       {/* Contact */}
       <Section id="contact" className="py-16">
