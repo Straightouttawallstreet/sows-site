@@ -548,7 +548,7 @@ export default function Component() {
     <Card className="overflow-hidden">
       <div className="relative w-full aspect-[4/5]"> {/* was aspect-[4/3] */}
         <Image
-          src="/032-O9ccK7pZU_s.jpeg"
+          src="/headshot.jpg"
           alt="Founder of Straight Outta Wall Street"
           fill
           className="object-cover object-top"       {/* add object-top to keep hair in frame */}
