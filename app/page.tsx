@@ -1,5 +1,7 @@
+// app/page.tsx
 "use client";
-import React from "react";
+
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -21,6 +23,7 @@ import {
   Users,
 } from "lucide-react";
 
+// ---------- Shared UI ----------
 type SectionProps = {
   id?: string;
   children: React.ReactNode;
@@ -35,14 +38,20 @@ function Section({ id, children, className = "" }: SectionProps) {
   );
 }
 
-const Badge = ({ children }) => (
+const Badge = ({ children }: { children: React.ReactNode }) => (
   <span className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white/70 px-3 py-1 text-sm shadow-sm backdrop-blur">
     <Sparkles className="h-4 w-4" />
     {children}
   </span>
 );
 
-const Card = ({ children, className = "" }) => (
+const Card = ({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => (
   <div
     className={`rounded-2xl border border-zinc-200 bg-white shadow-sm hover:shadow-md transition-shadow ${className}`}
   >
@@ -50,7 +59,13 @@ const Card = ({ children, className = "" }) => (
   </div>
 );
 
-const CTAButton = ({ children, href = "#contact" }) => (
+const CTAButton = ({
+  children,
+  href = "#contact",
+}: {
+  children: React.ReactNode;
+  href?: string;
+}) => (
   <a
     href={href}
     className="group inline-flex items-center gap-2 rounded-2xl bg-zinc-900 px-5 py-3 text-white shadow hover:bg-zinc-800 active:translate-y-px"
@@ -60,53 +75,108 @@ const CTAButton = ({ children, href = "#contact" }) => (
   </a>
 );
 
-const Stat = ({ value, label }) => (
+const Stat = ({ value, label }: { value: string; label: string }) => (
   <div className="text-center">
-    <div className="text-3xl sm:text-4xl font-semibold tracking-tight">{value}</div>
+    <div className="text-3xl sm:text-4xl font-semibold tracking-tight">
+      {value}
+    </div>
     <div className="text-sm text-zinc-500 mt-1">{label}</div>
   </div>
 );
 
-// ---------- Testimonials Data ----------
+// ---------- Testimonials Data (expanded) ----------
 const TESTIMONIALS = [
   {
     role: "JD/MBA → Private Credit",
-    who: "Client A — NYC — 08/13/25",
+    who: "Nick — New York, NY — 08/13/25",
     quote:
-      "No fluff — clear logic and repeatable structure. I left with frameworks I can actually use, not just templates to copy.",
-    full: `Came in to build skills across the 3 statements, modeling, and interview prep. We built from the ground up:
-• Three-statement integration so assumptions flow cleanly from revenue to cash without breakage.
-• LBO from scratch — sources & uses, debt schedules, sweeps, sensitivities — fast to update and easy to audit.
-• Returns waterfall with tiered IRR hurdles and changing splits that tie out every time.
-• Focused interview prep with technical drills and case walk-throughs to explain models under time pressure.
-
-Straightforward approach: no fluff, just logic and repeatable structure. Accessible, patient, and practical. Left with frameworks I still use (not templates to copy). 10/10.`,
+      "No fluff — clear logic and repeatable structure. Left with frameworks I actually use.",
+    full: `Built from the ground up: 3-statement integration, LBO from scratch (sources & uses, schedules, sweeps, sensitivities),
+and returns waterfalls that tie out every time. Focused interview drills and case walk-throughs. Clear logic, repeatable structure,
+and patient coaching made complex topics intuitive. 10/10.`,
   },
   {
-    role: "VP (IB) → Director (PE)",
-    who: "Client B — NYC — 10/19/24",
+    role: "Associate → Director (PE)",
+    who: "Peter — New York, NY — 10/19/24",
     quote:
-      "Relentless support under pressure — helped me land the Director role. Thorough, professional, responsive.",
-    full: `Used SOWS during a lateral process. Support covered modeling, valuation, case study walkthroughs, and detailed interview prep.
-Got specific guidance on firm research, expected questions, and what to ask back. Highly recommend for anyone leveling up to leadership.`,
+      "Relentless support under pressure — thorough, professional, responsive.",
+    full: `End-to-end help across modeling, valuation, case walk-throughs, and interview prep. Practical guidance on firm research,
+expected questions, and what to ask back. Landed the Director role.`,
   },
   {
     role: "Student → Bulge-Bracket IB",
-    who: "Client C — NYC — 02/27/23",
-    quote: "Wealth of knowledge and experience. Results speak for themselves.",
-    full: `Worked together from pre-internship through full-time offer at a bulge-bracket bank. Engaging teaching — not rote memorization.
-Breaks down complex topics clearly and patiently. Outcome: internship → full-time, now outperforming peers thanks to drills and frameworks.`,
+    who: "Alex — New York, NY — 03/27/25",
+    quote: "Transformative for understanding modeling and analysis.",
+    full: `Step-by-step methodology with live builds, session docs, and hands-on exercises. Covered IS/BS/CF mechanics, LBOs,
+credit, and M&A with clarity. Confidence and execution up; results followed.`,
   },
-  // Add more later; the "Show more reviews" section will render anything beyond index 2.
+  {
+    role: "Analyst → Associate",
+    who: "Olivier — London, UK — 11/08/24",
+    quote: "The only professional finance resource you’ll ever need.",
+    full: `Sharp across sectors and structures. Creative Excel solutions, clear teaching, and repeatable frameworks that stick.`,
+  },
+  {
+    role: "Career Switcher → IB Offer",
+    who: "Jason — New York, NY — 09/18/23",
+    quote:
+      "Valued mentor throughout the process — prepared and confident on game day.",
+    full: `Technical reps, deal stories, and structured drills turned interviews from stressful to manageable. Guidance felt like a real desk partner.`,
+  },
+  {
+    role: "Investor → Better Process",
+    who: "Georgia — Los Angeles, CA — 07/21/23",
+    quote:
+      "Knowledgeable and perceptive — improved how I think and decide.",
+    full: `Pinpointed weaknesses fast and built a plan. Investing process is cleaner; decision-making is faster.`,
+  },
+  {
+    role: "MBA → IB Internships",
+    who: "Anna — Los Angeles, CA — 05/09/22",
+    quote: "Aced technicals and modeling tests — multiple offers.",
+    full: `Logic first, then drills with feedback. No rote memorization. Complex topics made simple and sticky.`,
+  },
+  {
+    role: "Founder → Finance Fluency",
+    who: "Phillip — Syracuse, NY — 09/29/21",
+    quote: "Confidence to iterate and own the model.",
+    full: `Left with documentation, a robust driver-based model, and the ability to evolve it as the business changes.`,
+  },
+  {
+    role: "Engineer → IB Track",
+    who: "Adriana — New York, NY — 09/01/21",
+    quote: "Techniques that make fundamentals easy to retain.",
+    full: `From accounting basics to LBO waterfalls — clarity, repetition, and structure that actually stays with you.`,
+  },
+  {
+    role: "Operator → Sharper Analysis",
+    who: "Dan — Los Angeles, CA — 08/30/21",
+    quote: "High-energy, high-signal training — it finally clicked.",
+    full: `Years of courses never clicked like this. Fast fluency, practical logic, and a bias to ship under real timelines.`,
+  },
+  {
+    role: "Analyst → Faster Output",
+    who: "Omar — Atlanta, GA — 06/21/21",
+    quote: "The most diligent finance coach I’ve worked with.",
+    full: `Breaks models into small, auditable steps with checks. Productivity and quality went up immediately.`,
+  },
+  {
+    role: "MBA → Banking",
+    who: "George — New York, NY — 02/01/22",
+    quote:
+      "Top-tier instruction — simplified complex topics and raised my ceiling.",
+    full: `Thorough, patient, and outcome-oriented. Exactly what you want before technical interviews and on-desk execution.`,
+  },
 ];
 
-export default function Component() {
+// ---------- Page ----------
+export default function Page() {
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     alert("Thanks! We'll get back to you shortly.");
   };
 
-  // Simple rotating quote (changes on each render; good enough for a subtle blink)
+  // Hero quote carousel
   const QUICK_QUOTES = [
     "“No fluff — clear logic and repeatable structure.”",
     "“Transformed my understanding of modeling and analysis.”",
@@ -114,15 +184,28 @@ export default function Component() {
     "“The only finance resource you’ll ever need.”",
     "“Clarity, precision, and real-world execution.”",
   ];
-  const quoteIndex = Math.floor((Date.now() / 5000) % QUICK_QUOTES.length);
+  const [qIndex, setQIndex] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => {
+      setQIndex((i) => (i + 1) % QUICK_QUOTES.length);
+    }, 5000);
+    return () => clearInterval(id);
+  }, []);
 
   return (
     <div className="bg-[radial-gradient(60%_60%_at_10%_-10%,#e7e7ff_0%,transparent_70%),radial-gradient(60%_60%_at_90%_-20%,#ffe9e7_0%,transparent_70%)] text-zinc-900">
       {/* Header */}
       <header className="sticky top-0 z-40 bg-white/70 backdrop-blur border-b border-zinc-200">
         <Section className="flex h-16 items-center justify-between">
-          <a href="#home" className="flex items-center gap-2 font-semibold tracking-tight">
-            <img src="/sows-logo.png" alt="Straight Outta Wall Street" className="h-7 w-auto" />
+          <a
+            href="#home"
+            className="flex items-center gap-2 font-semibold tracking-tight"
+          >
+            <img
+              src="/sows-logo.png"
+              alt="Straight Outta Wall Street"
+              className="h-7 w-auto"
+            />
             <span className="sr-only">Straight Outta Wall Street</span>
           </a>
 
@@ -136,7 +219,10 @@ export default function Component() {
             <a href="#bootcamps" className="hover:text-zinc-900 text-zinc-600">
               Bootcamps
             </a>
-            <a href="#testimonials" className="hover:text-zinc-900 text-zinc-600">
+            <a
+              href="#testimonials"
+              className="hover:text-zinc-900 text-zinc-600"
+            >
               Testimonials
             </a>
             <a href="#about" className="hover:text-zinc-900 text-zinc-600">
@@ -160,28 +246,27 @@ export default function Component() {
             Straight Outta Wall Street
           </h1>
           <p className="mt-3 text-zinc-600 text-lg">
-            Two ways to work with us — train for speed and clarity, or ship real work under real deadlines.
+            Two ways to work with us—train for speed and clarity, or ship real
+            work under real deadlines.
           </p>
 
-          {/* Quick rotating quote */}
+          {/* Timed quote carousel */}
           <motion.div
-            className="mt-4 text-sm text-zinc-500"
+            className="mt-4 text-sm text-zinc-500 h-6 relative overflow-hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1.0 }}
+            transition={{ duration: 0.6 }}
           >
-            <div className="overflow-hidden relative h-6">
-              <motion.div
-                key={quoteIndex}
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -20, opacity: 0 }}
-                transition={{ duration: 0.6 }}
-                className="absolute w-full"
-              >
-                {QUICK_QUOTES[quoteIndex]}
-              </motion.div>
-            </div>
+            <motion.div
+              key={qIndex}
+              initial={{ y: 16, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.4 }}
+              className="absolute w-full"
+              aria-live="polite"
+            >
+              {QUICK_QUOTES[qIndex]}
+            </motion.div>
           </motion.div>
         </div>
 
@@ -194,27 +279,39 @@ export default function Component() {
             transition={{ duration: 0.5 }}
             className="rounded-2xl border border-zinc-200 bg-zinc-900 text-white p-7 shadow-sm"
           >
-            <h2 className="text-3xl font-semibold">Train like a Top-Bucket Analyst</h2>
+            <h2 className="text-3xl font-semibold">
+              Train like a Top-Bucket Analyst
+            </h2>
             <p className="mt-3 text-zinc-300">
-              Live modeling bootcamps and 1:1 coaching that shortcut 100+ hours of self-study. Clean builds,
-              repeatable checks, and explanations that stick.
+              Live modeling bootcamps and 1:1 coaching that shortcut 100+ hours
+              of self-study. Clean builds, repeatable checks, and explanations
+              that stick.
             </p>
             <ul className="mt-5 space-y-2 text-sm text-zinc-200">
               <li className="flex gap-2">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" /> 3-statement → FCF without breakage
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" />{" "}
+                3-statement → FCF without breakage
               </li>
               <li className="flex gap-2">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" /> LBO from scratch + sensitivities
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" />{" "}
+                LBO from scratch + sensitivities
               </li>
               <li className="flex gap-2">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" /> Interview drills & case walk-throughs
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" />{" "}
+                Interview drills & case walk-throughs
               </li>
             </ul>
             <div className="mt-6 flex gap-3">
-              <a href="#bootcamps" className="rounded-xl bg-white text-zinc-900 px-5 py-2 font-medium">
+              <a
+                href="#bootcamps"
+                className="rounded-xl bg-white text-zinc-900 px-5 py-2 font-medium"
+              >
                 Explore Training
               </a>
-              <a href="#contact" className="rounded-xl ring-1 ring-zinc-600 px-5 py-2">
+              <a
+                href="#contact"
+                className="rounded-xl ring-1 ring-zinc-600 px-5 py-2"
+              >
                 Book intro call
               </a>
             </div>
@@ -230,24 +327,34 @@ export default function Component() {
           >
             <h2 className="text-3xl font-semibold">Execute like a Seasoned VP</h2>
             <p className="mt-3 text-zinc-700">
-              Shadow advisory and live deal execution — from IC memos to sell-side decks — done right, under pressure.
+              Shadow advisory and live deal execution—from IC memos to sell-side
+              decks—done right, under pressure.
             </p>
             <ul className="mt-5 space-y-2 text-sm text-zinc-700">
               <li className="flex gap-2">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" /> Rapid model reviews, tie-outs, sweeps
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" />{" "}
+                Rapid model reviews, tie-outs, sweeps
               </li>
               <li className="flex gap-2">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" /> KPIs/exhibits: clean pages for partners/IC
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" />{" "}
+                KPIs/exhibits: clean pages for partners/IC
               </li>
               <li className="flex gap-2">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" /> Diligence prep, Q&A, timeline management
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" />{" "}
+                Diligence prep, Q&A, timeline management
               </li>
             </ul>
             <div className="mt-6 flex gap-3">
-              <a href="#offerings" className="rounded-xl bg-zinc-900 text-white px-5 py-2 font-medium">
+              <a
+                href="#offerings"
+                className="rounded-xl bg-zinc-900 text-white px-5 py-2 font-medium"
+              >
                 Explore Advisory
               </a>
-              <a href="#contact" className="rounded-xl ring-1 ring-zinc-300 px-5 py-2">
+              <a
+                href="#contact"
+                className="rounded-xl ring-1 ring-zinc-300 px-5 py-2"
+              >
                 Talk to us
               </a>
             </div>
@@ -267,7 +374,14 @@ export default function Component() {
           Trusted by professionals from
         </div>
         <div className="mt-5 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-6 opacity-80">
-          {["Goldman Sachs", "Bank of America", "Citigroup", "Wharton", "Columbia", "PE & HF"].map((name, i) => (
+          {[
+            "Goldman Sachs",
+            "Bank of America",
+            "Citigroup",
+            "Wharton",
+            "Columbia",
+            "PE & HF",
+          ].map((name, i) => (
             <div
               key={i}
               className="h-10 rounded-md bg-white border border-zinc-200 grid place-content-center text-[11px] text-zinc-600"
@@ -283,8 +397,8 @@ export default function Component() {
         <div className="max-w-3xl">
           <h2 className="text-3xl font-semibold tracking-tight">What we do</h2>
           <p className="mt-2 text-zinc-600">
-            Choose one path — or blend them. Everything is live, tailored, and focused on output quality under real-world
-            timelines.
+            Choose one path—or blend them. Everything is live, tailored, and
+            focused on output quality under real-world timelines.
           </p>
         </div>
         <div className="mt-8 grid md:grid-cols-3 gap-6">
@@ -294,14 +408,15 @@ export default function Component() {
               <h3 className="font-medium">1:1 Modeling Bootcamps</h3>
             </div>
             <p className="mt-3 text-sm text-zinc-600">
-              In ~10 hours become fluent in core IB/PE models. We build, you drive. Focus areas: LBOs, 3-statement, M&A,
-              DCF, SaaS bridges, debt schedules.
+              In ~10 hours become fluent in core IB/PE models. We build, you
+              drive. Focus areas: LBOs, 3-statement, M&A, DCF, SaaS bridges,
+              debt schedules.
             </p>
             <ul className="mt-4 space-y-2 text-sm">
               {[
                 "Hands-on, live screen-share drills",
                 "SOWS templates & checklists included",
-                "Pace matched to you — no filler",
+                "Pace matched to you—no filler",
               ].map((t, i) => (
                 <li key={i} className="flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4 text-emerald-600" />
@@ -310,39 +425,45 @@ export default function Component() {
               ))}
             </ul>
           </Card>
-
           <Card className="p-6">
             <div className="flex items-center gap-3">
               <LineChart className="h-5 w-5" />
               <h3 className="font-medium">Live Deal Advisory</h3>
             </div>
             <p className="mt-3 text-sm text-zinc-600">
-              On-call modeling and deck craftsmanship for active processes. From CIM tear-downs to partner-ready
-              exhibits — done right, under pressure.
+              On-call modeling and deck craftsmanship for active processes. From
+              CIM tear-downs to partner-ready exhibits—done right, under
+              pressure.
             </p>
             <ul className="mt-4 space-y-2 text-sm">
-              {["Data cuts, bridges, scenario cases", "Partner-clean pages & graphics", "IC memos, diligence prep, Q&A"].map(
-                (t, i) => (
-                  <li key={i} className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-emerald-600" />
-                    {t}
-                  </li>
-                )
-              )}
+              {[
+                "Data cuts, bridges, scenario cases",
+                "Partner-clean pages & graphics",
+                "IC memos, diligence prep, Q&A",
+              ].map((t, i) => (
+                <li key={i} className="flex items-center gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-600" />
+                  {t}
+                </li>
+              ))}
             </ul>
           </Card>
-
           <Card className="p-6">
             <div className="flex items-center gap-3">
               <Headphones className="h-5 w-5" />
               <h3 className="font-medium">Interview & Case Prep</h3>
             </div>
             <p className="mt-3 text-sm text-zinc-600">
-              Bank and PE interviews with a coach who thinks like an MD. Technicals, cases, deal stories, and live reps
-              until you’re sharp.
+              Bank and PE interviews with a coach who thinks like an MD.
+              Technicals, cases, deal stories, and live reps until you’re
+              sharp.
             </p>
             <ul className="mt-4 space-y-2 text-sm">
-              {["Custom question banks by firm", "Mock IC debates & red-team", "Feedback you can act on"].map((t, i) => (
+              {[
+                "Custom question banks by firm",
+                "Mock IC debates & red-team",
+                "Feedback you can act on",
+              ].map((t, i) => (
                 <li key={i} className="flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4 text-emerald-600" />
                   {t}
@@ -356,18 +477,28 @@ export default function Component() {
       {/* Casework */}
       <Section id="casework" className="py-14">
         <div className="max-w-3xl">
-          <h2 className="text-3xl font-semibold tracking-tight">Recent work & outcomes</h2>
+          <h2 className="text-3xl font-semibold tracking-tight">
+            Recent work & outcomes
+          </h2>
         </div>
         <div className="mt-8 grid md:grid-cols-3 gap-6">
           {[
             {
               title: "Healthcare services sell-side",
-              bullets: ["CIM & model overhaul", "KPIs/bridges clarified", "Buyer list & IC pages"],
+              bullets: [
+                "CIM & model overhaul",
+                "KPIs/bridges clarified",
+                "Buyer list & IC pages",
+              ],
               tag: "Sell-Side Advisory",
             },
             {
               title: "Special-sits pitch support",
-              bullets: ["Bull/bear-case sensitivities", "Reg & probe timeline exhibit", "Thesis one-pager"],
+              bullets: [
+                "Bull/bear-case sensitivities",
+                "Reg & probe timeline exhibit",
+                "Thesis one-pager",
+              ],
               tag: "Public Markets / HF",
             },
             {
@@ -384,7 +515,8 @@ export default function Component() {
               <ul className="mt-3 space-y-2 text-sm text-zinc-600">
                 {c.bullets.map((b, bi) => (
                   <li key={bi} className="flex gap-2">
-                    <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-zinc-400" /> {b}
+                    <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-zinc-400" />{" "}
+                    {b}
                   </li>
                 ))}
               </ul>
@@ -401,9 +533,12 @@ export default function Component() {
       {/* Bootcamps */}
       <Section id="bootcamps" className="py-14">
         <div className="max-w-3xl">
-          <h2 className="text-3xl font-semibold tracking-tight">Bootcamps that actually stick</h2>
+          <h2 className="text-3xl font-semibold tracking-tight">
+            Bootcamps that actually stick
+          </h2>
           <p className="mt-2 text-zinc-600">
-            Cohort or 1:1. Built for speed, retention, and immediate desk utility. Materials are yours to keep.
+            Cohort or 1:1. Built for speed, retention, and immediate desk
+            utility. Materials are yours to keep.
           </p>
         </div>
         <div className="mt-8 grid md:grid-cols-2 gap-6">
@@ -419,22 +554,25 @@ export default function Component() {
                 "Full valuation: DCF, WACC, Comps",
               ].map((b, i) => (
                 <li key={i} className="flex gap-2">
-                  <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-zinc-400" /> {b}
+                  <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-zinc-400" />{" "}
+                  {b}
                 </li>
               ))}
             </ul>
             <div className="mt-4 flex items-center justify-between">
-              <div className="text-sm text-zinc-600">From $399/hr • Volume discounts</div>
+              <div className="text-sm text-zinc-600">
+                From $399/hr • Volume discounts
+              </div>
               <CTAButton href="#contact">Get syllabus</CTAButton>
             </div>
           </Card>
-
           <Card className="p-6">
             <h3 className="font-medium flex items-center gap-2">
               <Users className="h-5 w-5" /> Team Upskilling / University Cohorts
             </h3>
             <p className="mt-3 text-sm text-zinc-600">
-              Custom curricula for banks, funds, and SMIFs. Integrated exercises, live labs, and graded take-homes.
+              Custom curricula for banks, funds, and SMIFs. Integrated
+              exercises, live labs, and graded take-homes.
             </p>
             <div className="mt-4 flex items-center justify-between">
               <div className="text-sm text-zinc-600">PO & vendor setup supported</div>
@@ -447,20 +585,31 @@ export default function Component() {
       {/* Testimonials */}
       <Section id="testimonials" className="py-14">
         <div className="max-w-3xl">
-          <h2 className="text-3xl font-semibold tracking-tight">Proof, not promises</h2>
-          <p className="mt-2 text-zinc-600">Real outcomes from analysts, associates, and operators who shipped with SOWS.</p>
+          <h2 className="text-3xl font-semibold tracking-tight">
+            Proof, not promises
+          </h2>
+          <p className="mt-2 text-zinc-600">
+            Real outcomes from analysts, associates, and operators who shipped
+            with SOWS.
+          </p>
         </div>
 
-        {/* First 3 testimonials */}
+        {/* First 3 cards */}
         <motion.div
           className="mt-8 grid md:grid-cols-3 gap-6"
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          variants={{ hidden: { opacity: 1 }, show: { transition: { staggerChildren: 0.12 } } }}
+          variants={{
+            hidden: { opacity: 1 },
+            show: { transition: { staggerChildren: 0.12 } },
+          }}
         >
           {TESTIMONIALS.slice(0, 3).map((t, i) => (
-            <motion.div key={i} variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }}>
+            <motion.div
+              key={i}
+              variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }}
+            >
               <Card className="p-6 h-full">
                 <div className="flex items-center justify-between">
                   <span className="inline-flex items-center text-[11px] rounded-full bg-zinc-100 px-2 py-1 text-zinc-700">
@@ -475,15 +624,19 @@ export default function Component() {
                 <div className="mt-2 text-xs text-zinc-500">{t.who}</div>
                 <p className="mt-4 text-sm text-zinc-800 leading-6">“{t.quote}”</p>
                 <details className="mt-3">
-                  <summary className="text-sm text-zinc-800 cursor-pointer">Read full story</summary>
-                  <p className="mt-2 text-sm text-zinc-600 whitespace-pre-line">{t.full}</p>
+                  <summary className="text-sm text-zinc-800 cursor-pointer">
+                    Read full story
+                  </summary>
+                  <p className="mt-2 text-sm text-zinc-600 whitespace-pre-line">
+                    {t.full}
+                  </p>
                 </details>
               </Card>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Expandable: renders any testimonials beyond the first 3 */}
+        {/* Expand for more */}
         <details className="mt-10">
           <summary className="cursor-pointer rounded-xl bg-zinc-900 text-white px-5 py-3 text-center text-sm font-medium hover:bg-zinc-800">
             Show more reviews
@@ -504,8 +657,12 @@ export default function Component() {
                 <div className="mt-2 text-xs text-zinc-500">{t.who}</div>
                 <p className="mt-4 text-sm text-zinc-800 leading-6">“{t.quote}”</p>
                 <details className="mt-3">
-                  <summary className="text-sm text-zinc-800 cursor-pointer">Read full story</summary>
-                  <p className="mt-2 text-sm text-zinc-600 whitespace-pre-line">{t.full}</p>
+                  <summary className="text-sm text-zinc-800 cursor-pointer">
+                    Read full story
+                  </summary>
+                  <p className="mt-2 text-sm text-zinc-600 whitespace-pre-line">
+                    {t.full}
+                  </p>
                 </details>
               </Card>
             ))}
@@ -519,9 +676,11 @@ export default function Component() {
           <div>
             <h2 className="text-3xl font-semibold tracking-tight">About SOWS</h2>
             <p className="mt-3 text-zinc-700 leading-7">
-              Founded by a practicing banker and coach, SOWS sits at the intersection of execution and education. We
-              combine desk-tested frameworks with clear teaching so you become independently dangerous — fast. No fluff,
-              no endless videos. Just reps and results.
+              Founded by a practicing banker and coach, SOWS sits at the
+              intersection of execution and education. We combine desk-tested
+              frameworks with clear teaching so you become independently
+              dangerous—fast. No fluff, no endless videos. Just reps and
+              results.
             </p>
             <ul className="mt-4 space-y-2 text-sm text-zinc-700">
               {[
@@ -551,9 +710,12 @@ export default function Component() {
         <Card className="p-6 md:p-8">
           <div className="grid md:grid-cols-2 gap-8 items-start">
             <div>
-              <h2 className="text-2xl font-semibold tracking-tight">Book an intro call</h2>
+              <h2 className="text-2xl font-semibold tracking-tight">
+                Book an intro call
+              </h2>
               <p className="mt-2 text-zinc-600">
-                Tell us your goals and timeline. We’ll recommend the fastest path and share sample materials.
+                Tell us your goals and timeline. We’ll recommend the fastest
+                path and share sample materials.
               </p>
               <div className="mt-6 space-y-3 text-sm">
                 <div className="flex items-center gap-2">
@@ -576,8 +738,6 @@ export default function Component() {
                 <a
                   href="https://www.linkedin.com"
                   className="inline-flex items-center gap-2 underline decoration-dotted"
-                  target="_blank"
-                  rel="noreferrer"
                 >
                   <Linkedin className="h-4 w-4" /> LinkedIn
                 </a>
@@ -605,7 +765,9 @@ export default function Component() {
                 />
               </div>
               <div>
-                <label className="text-sm text-zinc-700">What do you need help with?</label>
+                <label className="text-sm text-zinc-700">
+                  What do you need help with?
+                </label>
                 <select
                   name="need"
                   className="mt-1 w-full rounded-xl border border-zinc-300 px-3 py-2 bg-white focus:outline-none focus:ring-4 focus:ring-zinc-200"
@@ -640,7 +802,9 @@ export default function Component() {
               >
                 Request intro
               </button>
-              <p className="text-xs text-zinc-500">By submitting, you agree to be contacted. No spam — ever.</p>
+              <p className="text-xs text-zinc-500">
+                By submitting, you agree to be contacted. No spam—ever.
+              </p>
             </form>
           </div>
         </Card>
@@ -651,9 +815,13 @@ export default function Component() {
         <Section className="py-10 grid sm:grid-cols-3 gap-8 text-sm">
           <div>
             <div className="flex items-center gap-2 font-semibold">
-              <img src="/sows-logo.png" alt="SOWS" className="h-7 w-auto" /> Straight Outta Wall Street
+              <img src="/sows-logo.png" alt="SOWS" className="h-7 w-auto" />{" "}
+              Straight Outta Wall Street
             </div>
-            <p className="mt-3 text-zinc-600">Elite training and on-demand deal support for IB & PE professionals.</p>
+            <p className="mt-3 text-zinc-600">
+              Elite training and on-demand deal support for IB & PE
+              professionals.
+            </p>
           </div>
           <div>
             <div className="font-medium">Quick links</div>
@@ -694,7 +862,10 @@ export default function Component() {
         </Section>
         <div className="border-t border-zinc-200">
           <Section className="py-6 text-xs text-zinc-500 flex items-center justify-between">
-            <div>© {new Date().getFullYear()} Straight Outta Wall Street. All rights reserved.</div>
+            <div>
+              © {new Date().getFullYear()} Straight Outta Wall Street. All
+              rights reserved.
+            </div>
             <div className="flex items-center gap-4">
               <a href="#" className="hover:text-zinc-700">
                 Privacy
