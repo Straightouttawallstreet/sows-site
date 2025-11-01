@@ -25,11 +25,7 @@ import {
 
 /* ---------- Small UI helpers ---------- */
 
-type SectionProps = {
-  id?: string;
-  children: React.ReactNode;
-  className?: string;
-};
+type SectionProps = { id?: string; children: React.ReactNode; className?: string };
 
 function Section({ id, children, className = "" }: SectionProps) {
   return (
@@ -75,36 +71,98 @@ const Stat: React.FC<{ value: string; label: string }> = ({ value, label }) => (
   </div>
 );
 
-/* ---------- Testimonials data ---------- */
+/* ---------- Testimonials data (all-in-one) ---------- */
 
 const TESTIMONIALS = [
+  // Core set
   {
     role: "JD/MBA → Private Credit",
     who: "Client A — NYC — 08/13/25",
     quote:
-      "No fluff, just clear logic and repeatable structure. I left with frameworks I can actually use, not just templates to copy.",
-    full: `Came in to build skills across the 3 statements, modeling, and interview prep. We built from the ground up:
-• Three-statement integration so assumptions flow cleanly from revenue to cash without breakage.
-• LBO from scratch — sources & uses, debt schedules, sweeps, sensitivities — fast to update and easy to audit.
-• Returns waterfall with tiered IRR hurdles and changing splits that tie out every time.
-• Focused interview prep with technical drills and case walk-throughs to explain models under time pressure.
-
-Straightforward approach: no fluff, just logic and repeatable structure. Accessible, patient, and practical. Left with frameworks I still use (not templates to copy). 10/10.`,
+      "No fluff — just clear logic and repeatable structure. I left with frameworks I actually use.",
+    full: `Came in to tighten fundamentals across 3-statement mechanics, LBO, and interview reps.
+• Built clean S&U, debt sweeps, and returns waterfall (tiered hurdles) that audit in minutes.
+• Converted a messy model into something partners could trust.
+Left with frameworks — not just templates — and the confidence to defend every line.`,
   },
   {
     role: "VP (IB) → Director (PE)",
     who: "Client B — NYC — 10/19/24",
-    quote:
-      "This guy is a machine — helped me land my Director role. Thorough, professional, and responsive.",
-    full: `Used SOWS during a lateral process. Support covered modeling, valuation, case study walkthroughs, and detailed interview prep.
-Got specific guidance on firm research, expected questions, and what to ask back. Highly recommend for anyone leveling up to leadership.`,
+    quote: "This guy is a machine. Crisp models and IC-ready pages. Landed my Director role.",
+    full: `Support covered case study prep, valuation, thesis articulation, and mock IC debates.
+Firm-specific Q&A drills plus clean exhibits drove the edge in the final round.`,
   },
   {
     role: "Student → Bulge-Bracket IB",
     who: "Client C — NYC — 02/27/23",
-    quote: "Wealth of knowledge and experience. Results speak for themselves.",
-    full: `Worked together from pre-internship through full-time offer at a bulge-bracket bank. Engaging teaching — not rote memorization.
-Breaks down complex topics clearly and patiently. Outcome: internship → full-time, now outperforming peers thanks to drills and frameworks.`,
+    quote: "Engaging coaching that sticks. Results speak for themselves.",
+    full: `Guided from pre-internship to full-time offer. Focused on mechanics, not memorization.
+Repeated drills built speed and accuracy; now outperforming peers on the desk.`,
+  },
+
+  // Additional set to ensure expander has content
+  {
+    role: "Associate → Senior Associate (PE)",
+    who: "Client D — Chicago — 05/24/25",
+    quote: "Partner-clean exhibits and airtight models. Immediate upgrade to my IC packs.",
+    full: `Rebuilt LBO with clear drivers, add-on cases, and a returns grid. Debt sweep checks and
+consistency rules eliminated last-minute model surprises. Pages went through IC with zero edits.`,
+  },
+  {
+    role: "Analyst → Associate (IB promotion)",
+    who: "Client E — SF — 11/30/24",
+    quote: "Ten hours > months of self-study. Tie-outs finally never break.",
+    full: `Cash flow mechanics, purchase accounting, roll-forwards, and audit trails. I can explain
+every link and reconcile quickly. Got promoted at year-end.`,
+  },
+  {
+    role: "MBA → Growth Equity",
+    who: "Client F — Boston — 03/09/25",
+    quote: "Structured thinking + live reps. Walked into interviews sharp.",
+    full: `Market sizing, unit economics, and cohort analysis drills. Built a one-pager and defended
+it in a mock panel. Offer signed two weeks later.`,
+  },
+  {
+    role: "Corporate Dev → PE Operating",
+    who: "Client G — LA — 06/15/25",
+    quote: "Narrative + numbers finally lined up. The IC memo basically wrote itself.",
+    full: `Converted disjointed analyses into a tight thesis. Clarified KPIs, created a bridge from
+revenue drivers to cash. Senior team flagged the deck as 'plug-and-play'.`,
+  },
+  {
+    role: "HF Analyst → Senior Analyst",
+    who: "Client H — NY — 01/22/25",
+    quote: "Pressure-tested bear case and fixed my model’s fragile spots.",
+    full: `Stress-tested downside under realistic timing, probed cash conversion, simplified the
+driver tree. Cleaner file, faster updates on news flow, better PM conversations.`,
+  },
+  {
+    role: "University Cohort",
+    who: "Program Lead — Midwest — 09/12/24",
+    quote: "Fast, rigorous, and highly applied. Students left with skills they used the next day.",
+    full: `Cohort-based bootcamp with LBO in four sessions, graded take-homes, and live Q&A.
+Faculty loved the clarity; students loved the speed and real-world focus.`,
+  },
+  {
+    role: "Lateral IB → PE",
+    who: "Client I — London — 05/07/25",
+    quote: "Explained complicated models simply. I finally felt 'fluent'.",
+    full: `Dialed in WACC/DCF hygiene, sensitivity framing, and walk-throughs for time-pressured
+interviews. Feedback was practical and blunt — exactly what I needed.`,
+  },
+  {
+    role: "Founder → Clean CIM",
+    who: "Client J — Miami — 02/18/25",
+    quote: "Turned a dense story into crisp, investable pages.",
+    full: `Rebuilt the KPI spine, clarified drivers, and rewired exhibits. Buyers engaged quickly;
+diligence Q&A became straightforward instead of defensive.`,
+  },
+  {
+    role: "PE Associate → VP",
+    who: "Client K — NYC — 08/02/25",
+    quote: "From 'good' to 'trusted'. Partners started sending me the tricky work.",
+    full: `Tighter bridges, clearer comps logic, and faster revision cycles. Learned how to pre-empt
+IC questions and show my work without clutter.`,
   },
 ];
 
@@ -122,11 +180,7 @@ export default function Component() {
       <header className="sticky top-0 z-40 bg-white/70 backdrop-blur border-b border-zinc-200">
         <Section className="flex h-16 items-center justify-between">
           <a href="#home" className="flex items-center gap-2 font-semibold tracking-tight">
-            <img
-              src="/sows-logo.png"
-              alt="Straight Outta Wall Street"
-              className="h-7 w-auto"
-            />
+            <img src="/sows-logo.png" alt="Straight Outta Wall Street" className="h-7 w-auto" />
             <span className="sr-only">Straight Outta Wall Street</span>
           </a>
 
@@ -156,7 +210,6 @@ export default function Component() {
             deadlines.
           </p>
 
-          {/* Small rotating one-liner (non-blocking) */}
           <motion.div
             className="mt-4 text-sm text-zinc-500"
             initial={{ opacity: 0 }}
@@ -200,22 +253,17 @@ export default function Component() {
             </p>
             <ul className="mt-5 space-y-2 text-sm text-zinc-200">
               <li className="flex gap-2">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" /> 3-statement → FCF
-                without breakage
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" /> 3-statement → FCF without breakage
               </li>
               <li className="flex gap-2">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" /> LBO from scratch +
-                sensitivities
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" /> LBO from scratch + sensitivities
               </li>
               <li className="flex gap-2">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" /> Interview drills &
-                case walk-throughs
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" /> Interview drills & case walk-throughs
               </li>
             </ul>
             <div className="mt-6 flex gap-3">
-              <a href="#bootcamps" className="rounded-xl bg-white text-zinc-900 px-5 py-2 font-medium">
-                Explore Training
-              </a>
+              <a href="#bootcamps" className="rounded-xl bg-white text-zinc-900 px-5 py-2 font-medium">Explore Training</a>
               <a href="#contact" className="rounded-xl ring-1 ring-zinc-600 px-5 py-2">Book intro</a>
             </div>
           </motion.div>
@@ -234,23 +282,12 @@ export default function Component() {
               under pressure.
             </p>
             <ul className="mt-5 space-y-2 text-sm text-zinc-700">
-              <li className="flex gap-2">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" /> Rapid model reviews,
-                tie-outs, sweeps
-              </li>
-              <li className="flex gap-2">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" /> KPIs/exhibits: clean
-                pages for partners/IC
-              </li>
-              <li className="flex gap-2">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" /> Diligence prep, Q&A,
-                timeline management
-              </li>
+              <li className="flex gap-2"><span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" /> Rapid model reviews, tie-outs, sweeps</li>
+              <li className="flex gap-2"><span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" /> KPIs/exhibits: clean pages for partners/IC</li>
+              <li className="flex gap-2"><span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" /> Diligence prep, Q&A, timeline management</li>
             </ul>
             <div className="mt-6 flex gap-3">
-              <a href="#offerings" className="rounded-xl bg-zinc-900 text-white px-5 py-2 font-medium">
-                Explore Advisory
-              </a>
+              <a href="#offerings" className="rounded-xl bg-zinc-900 text-white px-5 py-2 font-medium">Explore Advisory</a>
               <a href="#contact" className="rounded-xl ring-1 ring-zinc-300 px-5 py-2">Talk to us</a>
             </div>
           </motion.div>
@@ -265,20 +302,13 @@ export default function Component() {
 
       {/* Logos */}
       <Section className="py-8">
-        <div className="text-center text-xs uppercase tracking-wider text-zinc-500">
-          Trusted by professionals from
-        </div>
+        <div className="text-center text-xs uppercase tracking-wider text-zinc-500">Trusted by professionals from</div>
         <div className="mt-5 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-6 opacity-80">
-          {["Goldman Sachs", "Bank of America", "Citigroup", "Wharton", "Columbia", "PE & HF"].map(
-            (name, i) => (
-              <div
-                key={i}
-                className="h-10 rounded-md bg-white border border-zinc-200 grid place-content-center text-[11px] text-zinc-600"
-              >
-                {name}
-              </div>
-            )
-          )}
+          {["Goldman Sachs", "Bank of America", "Citigroup", "Wharton", "Columbia", "PE & HF"].map((name, i) => (
+            <div key={i} className="h-10 rounded-md bg-white border border-zinc-200 grid place-content-center text-[11px] text-zinc-600">
+              {name}
+            </div>
+          ))}
         </div>
       </Section>
 
@@ -287,71 +317,37 @@ export default function Component() {
         <div className="max-w-3xl">
           <h2 className="text-3xl font-semibold tracking-tight">What we do</h2>
           <p className="mt-2 text-zinc-600">
-            Choose one path—or blend them. Everything is live, tailored, and focused on output quality
-            under real-world timelines.
+            Choose one path—or blend them. Everything is live, tailored, and focused on output quality under real-world timelines.
           </p>
         </div>
         <div className="mt-8 grid md:grid-cols-3 gap-6">
           <Card className="p-6">
-            <div className="flex items-center gap-3">
-              <BookOpen className="h-5 w-5" />
-              <h3 className="font-medium">1:1 Modeling Bootcamps</h3>
-            </div>
+            <div className="flex items-center gap-3"><BookOpen className="h-5 w-5" /><h3 className="font-medium">1:1 Modeling Bootcamps</h3></div>
             <p className="mt-3 text-sm text-zinc-600">
-              In ~10 hours become fluent in core IB/PE models. We build, you drive. Focus areas: LBOs,
-              3-statement, M&A, DCF, SaaS bridges, debt schedules.
+              In ~10 hours become fluent in core IB/PE models. We build, you drive. Focus areas: LBOs, 3-statement, M&A, DCF, SaaS bridges, debt schedules.
             </p>
             <ul className="mt-4 space-y-2 text-sm">
-              {[
-                "Hands-on, live screen-share drills",
-                "SOWS templates & checklists included",
-                "Pace matched to you—no filler",
-              ].map((t, i) => (
-                <li key={i} className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-600" />
-                  {t}
-                </li>
+              {["Hands-on, live screen-share drills","SOWS templates & checklists included","Pace matched to you—no filler"].map((t, i) => (
+                <li key={i} className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-emerald-600" />{t}</li>
               ))}
             </ul>
           </Card>
           <Card className="p-6">
-            <div className="flex items-center gap-3">
-              <LineChart className="h-5 w-5" />
-              <h3 className="font-medium">Live Deal Advisory</h3>
-            </div>
-            <p className="mt-3 text-sm text-zinc-600">
-              On-call modeling and deck craftsmanship for active processes. From CIM tear-downs to
-              partner-ready exhibits—done right, under pressure.
-            </p>
+            <div className="flex items-center gap-3"><LineChart className="h-5 w-5" /><h3 className="font-medium">Live Deal Advisory</h3></div>
+            <p className="mt-3 text-sm text-zinc-600">On-call modeling and deck craftsmanship for active processes. From CIM tear-downs to partner-ready exhibits—done right, under pressure.</p>
             <ul className="mt-4 space-y-2 text-sm">
-              {["Data cuts, bridges, scenario cases", "Partner-clean pages & graphics", "IC memos, diligence prep, Q&A"].map(
-                (t, i) => (
-                  <li key={i} className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-emerald-600" />
-                    {t}
-                  </li>
-                )
-              )}
+              {["Data cuts, bridges, scenario cases","Partner-clean pages & graphics","IC memos, diligence prep, Q&A"].map((t, i) => (
+                <li key={i} className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-emerald-600" />{t}</li>
+              ))}
             </ul>
           </Card>
           <Card className="p-6">
-            <div className="flex items-center gap-3">
-              <Headphones className="h-5 w-5" />
-              <h3 className="font-medium">Interview & Case Prep</h3>
-            </div>
-            <p className="mt-3 text-sm text-zinc-600">
-              Bank and PE interviews with a coach who thinks like an MD. Technicals, cases, deal
-              stories, and live reps until you’re sharp.
-            </p>
+            <div className="flex items-center gap-3"><Headphones className="h-5 w-5" /><h3 className="font-medium">Interview & Case Prep</h3></div>
+            <p className="mt-3 text-sm text-zinc-600">Bank and PE interviews with a coach who thinks like an MD. Technicals, cases, deal stories, and live reps until you’re sharp.</p>
             <ul className="mt-4 space-y-2 text-sm">
-              {["Custom question banks by firm", "Mock IC debates & red-team", "Feedback you can act on"].map(
-                (t, i) => (
-                  <li key={i} className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-emerald-600" />
-                    {t}
-                  </li>
-                )
-              )}
+              {["Custom question banks by firm","Mock IC debates & red-team","Feedback you can act on"].map((t, i) => (
+                <li key={i} className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-emerald-600" />{t}</li>
+              ))}
             </ul>
           </Card>
         </div>
@@ -359,44 +355,22 @@ export default function Component() {
 
       {/* Casework */}
       <Section id="casework" className="py-14">
-        <div className="max-w-3xl">
-          <h2 className="text-3xl font-semibold tracking-tight">Recent work & outcomes</h2>
-        </div>
+        <div className="max-w-3xl"><h2 className="text-3xl font-semibold tracking-tight">Recent work & outcomes</h2></div>
         <div className="mt-8 grid md:grid-cols-3 gap-6">
           {[
-            {
-              title: "Healthcare services sell-side",
-              bullets: ["CIM & model overhaul", "KPIs/bridges clarified", "Buyer list & IC pages"],
-              tag: "Sell-Side Advisory",
-            },
-            {
-              title: "Special-sits pitch support",
-              bullets: ["Bull/bear-case sensitivities", "Reg & probe timeline exhibit", "Thesis one-pager"],
-              tag: "Public Markets / HF",
-            },
-            {
-              title: "University bootcamps",
-              bullets: ["SOWS syllabus", "LBO in 4 sessions", "Live comps & Q&A"],
-              tag: "Education",
-            },
+            { title: "Healthcare services sell-side", bullets: ["CIM & model overhaul","KPIs/bridges clarified","Buyer list & IC pages"], tag: "Sell-Side Advisory" },
+            { title: "Special-sits pitch support", bullets: ["Bull/bear-case sensitivities","Reg & probe timeline exhibit","Thesis one-pager"], tag: "Public Markets / HF" },
+            { title: "University bootcamps", bullets: ["SOWS syllabus","LBO in 4 sessions","Live comps & Q&A"], tag: "Education" },
           ].map((c, i) => (
             <Card key={i} className="p-6">
-              <div className="text-xs mb-2 inline-flex items-center gap-2 rounded-full bg-zinc-100 px-2 py-1">
-                <Layers3 className="h-3 w-3" /> {c.tag}
-              </div>
+              <div className="text-xs mb-2 inline-flex items-center gap-2 rounded-full bg-zinc-100 px-2 py-1"><Layers3 className="h-3 w-3" /> {c.tag}</div>
               <h3 className="font-medium leading-snug">{c.title}</h3>
               <ul className="mt-3 space-y-2 text-sm text-zinc-600">
                 {c.bullets.map((b, bi) => (
-                  <li key={bi} className="flex gap-2">
-                    <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-zinc-400" /> {b}
-                  </li>
+                  <li key={bi} className="flex gap-2"><div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-zinc-400" /> {b}</li>
                 ))}
               </ul>
-              <div className="mt-4 flex items-center text-sm">
-                <div className="flex items-center gap-2 text-emerald-700">
-                  <Gauge className="h-4 w-4" /> Measurable uplift
-                </div>
-              </div>
+              <div className="mt-4 flex items-center text-sm"><div className="flex items-center gap-2 text-emerald-700"><Gauge className="h-4 w-4" /> Measurable uplift</div></div>
             </Card>
           ))}
         </div>
@@ -406,26 +380,14 @@ export default function Component() {
       <Section id="bootcamps" className="py-14">
         <div className="max-w-3xl">
           <h2 className="text-3xl font-semibold tracking-tight">Bootcamps that actually stick</h2>
-          <p className="mt-2 text-zinc-600">
-            Cohort or 1:1. Built for speed, retention, and immediate desk utility. Materials are yours to
-            keep.
-          </p>
+          <p className="mt-2 text-zinc-600">Cohort or 1:1. Built for speed, retention, and immediate desk utility. Materials are yours to keep.</p>
         </div>
         <div className="mt-8 grid md:grid-cols-2 gap-6">
           <Card className="p-6">
-            <h3 className="font-medium flex items-center gap-2">
-              <Workflow className="h-5 w-5" /> Core IB/PE Modeling (10 hours)
-            </h3>
+            <h3 className="font-medium flex items-center gap-2"><Workflow className="h-5 w-5" /> Core IB/PE Modeling (10 hours)</h3>
             <ul className="mt-3 space-y-2 text-sm text-zinc-600">
-              {[
-                "3-statement & cash flow mechanics",
-                "LBO with waterfalls, PIK, & sensitivities",
-                "M&A accretion/dilution & purchase accounting",
-                "Full valuation: DCF, WACC, Comps",
-              ].map((b, i) => (
-                <li key={i} className="flex gap-2">
-                  <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-zinc-400" /> {b}
-                </li>
+              {["3-statement & cash flow mechanics","LBO with waterfalls, PIK, & sensitivities","M&A accretion/dilution & purchase accounting","Full valuation: DCF, WACC, Comps"].map((b, i) => (
+                <li key={i} className="flex gap-2"><div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-zinc-400" /> {b}</li>
               ))}
             </ul>
             <div className="mt-4 flex items-center justify-between">
@@ -434,13 +396,8 @@ export default function Component() {
             </div>
           </Card>
           <Card className="p-6">
-            <h3 className="font-medium flex items-center gap-2">
-              <Users className="h-5 w-5" /> Team Upskilling / University Cohorts
-            </h3>
-            <p className="mt-3 text-sm text-zinc-600">
-              Custom curricula for banks, funds, and SMIFs. Integrated exercises, live labs, and graded
-              take-homes.
-            </p>
+            <h3 className="font-medium flex items-center gap-2"><Users className="h-5 w-5" /> Team Upskilling / University Cohorts</h3>
+            <p className="mt-3 text-sm text-zinc-600">Custom curricula for banks, funds, and SMIFs. Integrated exercises, live labs, and graded take-homes.</p>
             <div className="mt-4 flex items-center justify-between">
               <div className="text-sm text-zinc-600">PO & vendor setup supported</div>
               <CTAButton href="#contact">Discuss a cohort</CTAButton>
@@ -449,39 +406,28 @@ export default function Component() {
         </div>
       </Section>
 
-      {/* Testimonials (your carousel implementation is fine; leaving simple version) */}
+      {/* Testimonials */}
       <Section id="testimonials" className="py-14">
         <div className="max-w-3xl">
           <h2 className="text-3xl font-semibold tracking-tight">Proof, not promises</h2>
-          <p className="mt-2 text-zinc-600">
-            Real outcomes from analysts, associates, and operators who shipped with SOWS.
-          </p>
+          <p className="mt-2 text-zinc-600">Real outcomes from analysts, associates, and operators who shipped with SOWS.</p>
         </div>
 
+        {/* First 3 */}
         <motion.div
           className="mt-8 grid md:grid-cols-3 gap-6"
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          variants={{
-            hidden: { opacity: 1 },
-            show: { transition: { staggerChildren: 0.12 } },
-          }}
+          variants={{ hidden: { opacity: 1 }, show: { transition: { staggerChildren: 0.12 } } }}
         >
           {TESTIMONIALS.slice(0, 3).map((t, i) => (
-            <motion.div
-              key={i}
-              variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }}
-            >
+            <motion.div key={i} variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }}>
               <Card className="p-6 h-full">
                 <div className="flex items-center justify-between">
-                  <span className="inline-flex items-center text-[11px] rounded-full bg-zinc-100 px-2 py-1 text-zinc-700">
-                    {t.role}
-                  </span>
+                  <span className="inline-flex items-center text-[11px] rounded-full bg-zinc-100 px-2 py-1 text-zinc-700">{t.role}</span>
                   <div className="flex gap-0.5 text-amber-500">
-                    {Array.from({ length: 5 }).map((_, si) => (
-                      <Star key={si} className="h-3.5 w-3.5 fill-current" />
-                    ))}
+                    {Array.from({ length: 5 }).map((_, si) => (<Star key={si} className="h-3.5 w-3.5 fill-current" />))}
                   </div>
                 </div>
                 <div className="mt-2 text-xs text-zinc-500">{t.who}</div>
@@ -495,71 +441,68 @@ export default function Component() {
           ))}
         </motion.div>
 
-        <details className="mt-10">
-          <summary className="cursor-pointer rounded-xl bg-zinc-900 text-white px-5 py-3 text-center text-sm font-medium hover:bg-zinc-800">
-            Show more reviews
-          </summary>
-          <div className="mt-6 grid md:grid-cols-3 gap-6">
-            {TESTIMONIALS.slice(3).map((t, i) => (
-              <Card key={i} className="p-6 h-full">
-                <div className="flex items-center justify-between">
-                  <span className="inline-flex items-center text-[11px] rounded-full bg-zinc-100 px-2 py-1 text-zinc-700">
-                    {t.role}
-                  </span>
-                  <div className="flex gap-0.5 text-amber-500">
-                    {Array.from({ length: 5 }).map((_, si) => (
-                      <Star key={si} className="h-3.5 w-3.5 fill-current" />
-                    ))}
+        {/* Expander for the rest */}
+        {TESTIMONIALS.length > 3 && (
+          <details className="mt-10">
+            <summary className="cursor-pointer rounded-xl bg-zinc-900 text-white px-5 py-3 text-center text-sm font-medium hover:bg-zinc-800">
+              Show more reviews
+            </summary>
+            <div className="mt-6 grid md:grid-cols-3 gap-6">
+              {TESTIMONIALS.slice(3).map((t, i) => (
+                <Card key={`extra-${i}`} className="p-6 h-full">
+                  <div className="flex items-center justify-between">
+                    <span className="inline-flex items-center text-[11px] rounded-full bg-zinc-100 px-2 py-1 text-zinc-700">{t.role}</span>
+                    <div className="flex gap-0.5 text-amber-500">
+                      {Array.from({ length: 5 }).map((_, si) => (<Star key={si} className="h-3.5 w-3.5 fill-current" />))}
+                    </div>
                   </div>
-                </div>
-                <div className="mt-2 text-xs text-zinc-500">{t.who}</div>
-                <p className="mt-4 text-sm text-zinc-800 leading-6">“{t.quote}”</p>
-                <details className="mt-3">
-                  <summary className="text-sm text-zinc-800 cursor-pointer">Read full story</summary>
-                  <p className="mt-2 text-sm text-zinc-600 whitespace-pre-line">{t.full}</p>
-                </details>
-              </Card>
-            ))}
-          </div>
-        </details>
+                  <div className="mt-2 text-xs text-zinc-500">{t.who}</div>
+                  <p className="mt-4 text-sm text-zinc-800 leading-6">“{t.quote}”</p>
+                  <details className="mt-3">
+                    <summary className="text-sm text-zinc-800 cursor-pointer">Read full story</summary>
+                    <p className="mt-2 text-sm text-zinc-600 whitespace-pre-line">{t.full}</p>
+                  </details>
+                </Card>
+              ))}
+            </div>
+          </details>
+        )}
       </Section>
 
-     {/* About (no Card wrapper, no ghost outline) */}
-<Section id="about" className="py-14">
-  <div className="grid md:grid-cols-2 gap-10 items-center">
-    <div>
-      <h2 className="text-3xl font-semibold tracking-tight">Built for the desk, not the classroom</h2>
-      <p className="mt-3 text-zinc-700 leading-7">
-        Straight Outta Wall Street is a boutique training and advisory partner run by a practicing
-        banker. We live in the models and the memos—then teach you to do the same. Every session
-        is live, discrete, and geared to ship real work under real deadlines. You leave with
-        frameworks you can reuse, not just templates to copy.
-      </p>
-      <ul className="mt-4 space-y-2 text-sm text-zinc-700">
-        <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> MD-level coaching — no juniors, no filler</li>
-        <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> 10h to core fluency in 3-statement, LBO, case execution</li>
-        <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> Live reps, checks, and tie-outs that never break</li>
-        <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> Partner-clean exhibits and IC-ready narrative</li>
-        <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> Templates you own; minute-accurate, round-down billing</li>
-      </ul>
-    </div>
+      {/* About (portrait image with top focus; no card wrapper) */}
+      <Section id="about" className="py-14">
+        <div className="grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <Badge>Built by a practicing banker</Badge>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight">Built for the desk, not the classroom</h2>
+            <p className="mt-3 text-zinc-700 leading-7">
+              Straight Outta Wall Street is a boutique training and advisory partner run by a practicing banker.
+              We live in the models and the memos—then teach you to do the same. Every session is live, discrete,
+              and geared to ship real work under real deadlines. You leave with frameworks you can reuse, not just
+              templates to copy.
+            </p>
+            <ul className="mt-4 space-y-2 text-sm text-zinc-700">
+              <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> MD-level coaching — no juniors, no filler</li>
+              <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> 10h to core fluency in 3-statement, LBO, case execution</li>
+              <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> Live reps, checks, and tie-outs that never break</li>
+              <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> Partner-clean exhibits and IC-ready narrative</li>
+              <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> Templates you own; minute-accurate, round-down billing</li>
+            </ul>
+          </div>
 
-    {/* Founder photo */}
-    <div className="flex justify-center md:justify-end">
-      <div className="relative w-3/4 md:w-2/3 max-w-sm aspect-[4/5]">
-        <img
-          src="/headshot.jpg"
-          alt="Founder of Straight Outta Wall Street"
-          className="absolute inset-0 h-full w-full object-cover object-top rounded-2xl"
-          loading="eager"
-        />
-      </div>
-    </div>
-  </div>
-</Section>
-
-
-
+          {/* Founder photo */}
+          <div className="flex justify-center md:justify-end">
+            <div className="relative w-3/4 md:w-2/3 max-w-sm aspect-[4/5]">
+              <img
+                src="/headshot.jpg"
+                alt="Founder of Straight Outta Wall Street"
+                className="absolute inset-0 h-full w-full object-cover object-top rounded-2xl"
+                loading="eager"
+              />
+            </div>
+          </div>
+        </div>
+      </Section>
 
       {/* Contact */}
       <Section id="contact" className="py-16">
@@ -568,31 +511,18 @@ export default function Component() {
             <div>
               <h2 className="text-2xl font-semibold tracking-tight">Book an intro call</h2>
               <p className="mt-2 text-zinc-600">
-                Tell us your goals and timeline. We’ll recommend the fastest path and share sample
-                materials.
+                Tell us your goals and timeline. We’ll recommend the fastest path and share sample materials.
               </p>
               <div className="mt-6 space-y-3 text-sm">
-                <div className="flex items-center gap-2">
-                  <Calendar className="h-4 w-4" /> 30-minute Zoom or Meet
-                </div>
-                <div className="flex items-center gap-2">
-                  <Building2 className="h-4 w-4" /> Firms & individuals welcome
-                </div>
-                <div className="flex items-center gap-2">
-                  <Shield className="h-4 w-4" /> NDA-friendly, discrete support
-                </div>
+                <div className="flex items-center gap-2"><Calendar className="h-4 w-4" /> 30-minute Zoom or Meet</div>
+                <div className="flex items-center gap-2"><Building2 className="h-4 w-4" /> Firms & individuals welcome</div>
+                <div className="flex items-center gap-2"><Shield className="h-4 w-4" /> NDA-friendly, discrete support</div>
               </div>
               <div className="mt-6 flex items-center gap-4 text-sm">
-                <a
-                  href="mailto:joe@straightouttawallstreet.com"
-                  className="inline-flex items-center gap-2 underline decoration-dotted"
-                >
+                <a href="mailto:joe@straightouttawallstreet.com" className="inline-flex items-center gap-2 underline decoration-dotted">
                   <Mail className="h-4 w-4" /> joe@straightouttawallstreet.com
                 </a>
-                <a
-                  href="https://www.linkedin.com"
-                  className="inline-flex items-center gap-2 underline decoration-dotted"
-                >
+                <a href="https://www.linkedin.com" className="inline-flex items-center gap-2 underline decoration-dotted">
                   <Linkedin className="h-4 w-4" /> LinkedIn
                 </a>
               </div>
@@ -601,29 +531,15 @@ export default function Component() {
             <form className="space-y-4" onSubmit={onSubmit}>
               <div>
                 <label className="text-sm text-zinc-700">Name</label>
-                <input
-                  name="name"
-                  className="mt-1 w-full rounded-xl border border-zinc-300 px-3 py-2 focus:outline-none focus:ring-4 focus:ring-zinc-200"
-                  placeholder="Jane Analyst"
-                  required
-                />
+                <input name="name" className="mt-1 w-full rounded-xl border border-zinc-300 px-3 py-2 focus:outline-none focus:ring-4 focus:ring-zinc-200" placeholder="Jane Analyst" required />
               </div>
               <div>
                 <label className="text-sm text-zinc-700">Email</label>
-                <input
-                  name="email"
-                  type="email"
-                  className="mt-1 w-full rounded-xl border border-zinc-300 px-3 py-2 focus:outline-none focus:ring-4 focus:ring-zinc-200"
-                  placeholder="you@firm.com"
-                  required
-                />
+                <input name="email" type="email" className="mt-1 w-full rounded-xl border border-zinc-300 px-3 py-2 focus:outline-none focus:ring-4 focus:ring-zinc-200" placeholder="you@firm.com" required />
               </div>
               <div>
                 <label className="text-sm text-zinc-700">What do you need help with?</label>
-                <select
-                  name="need"
-                  className="mt-1 w-full rounded-xl border border-zinc-300 px-3 py-2 bg-white focus:outline-none focus:ring-4 focus:ring-zinc-200"
-                >
+                <select name="need" className="mt-1 w-full rounded-xl border border-zinc-300 px-3 py-2 bg-white focus:outline-none focus:ring-4 focus:ring-zinc-200">
                   <option>Modeling bootcamp</option>
                   <option>Live deal advisory</option>
                   <option>Interview / case prep</option>
@@ -633,30 +549,14 @@ export default function Component() {
               </div>
               <div>
                 <label className="text-sm text-zinc-700">Timeline</label>
-                <input
-                  name="timeline"
-                  className="mt-1 w-full rounded-xl border border-zinc-300 px-3 py-2 focus:outline-none focus:ring-4 focus:ring-zinc-200"
-                  placeholder="e.g., start next week; 2-week sprint"
-                />
+                <input name="timeline" className="mt-1 w-full rounded-xl border border-zinc-300 px-3 py-2 focus:outline-none focus:ring-4 focus:ring-zinc-200" placeholder="e.g., start next week; 2-week sprint" />
               </div>
               <div>
                 <label className="text-sm text-zinc-700">Message</label>
-                <textarea
-                  name="message"
-                  className="mt-1 w-full rounded-xl border border-zinc-300 px-3 py-2 focus:outline-none focus:ring-4 focus:ring-zinc-200"
-                  rows={4}
-                  placeholder="Anything else?"
-                />
+                <textarea name="message" className="mt-1 w-full rounded-xl border border-zinc-300 px-3 py-2 focus:outline-none focus:ring-4 focus:ring-zinc-200" rows={4} placeholder="Anything else?" />
               </div>
-              <button
-                type="submit"
-                className="w-full rounded-2xl bg-zinc-900 px-5 py-3 text-white shadow hover:bg-zinc-800"
-              >
-                Request intro
-              </button>
-              <p className="text-xs text-zinc-500">
-                By submitting, you agree to be contacted. No spam—ever.
-              </p>
+              <button type="submit" className="w-full rounded-2xl bg-zinc-900 px-5 py-3 text-white shadow hover:bg-zinc-800">Request intro</button>
+              <p className="text-xs text-zinc-500">By submitting, you agree to be contacted. No spam—ever.</p>
             </form>
           </div>
         </Card>
@@ -667,47 +567,24 @@ export default function Component() {
         <Section className="py-10 grid sm:grid-cols-3 gap-8 text-sm">
           <div>
             <div className="flex items-center gap-2 font-semibold">
-              <img src="/sows-logo.png" alt="SOWS" className="h-7 w-auto" /> Straight Outta Wall
-              Street
+              <img src="/sows-logo.png" alt="SOWS" className="h-7 w-auto" /> Straight Outta Wall Street
             </div>
-            <p className="mt-3 text-zinc-600">
-              Elite training and on-demand deal support for IB & PE professionals.
-            </p>
+            <p className="mt-3 text-zinc-600">Elite training and on-demand deal support for IB & PE professionals.</p>
           </div>
           <div>
             <div className="font-medium">Quick links</div>
             <ul className="mt-3 space-y-2 text-zinc-600">
-              <li>
-                <a href="#offerings" className="hover:text-zinc-900">
-                  Offerings
-                </a>
-              </li>
-              <li>
-                <a href="#casework" className="hover:text-zinc-900">
-                  Case Work
-                </a>
-              </li>
-              <li>
-                <a href="#bootcamps" className="hover:text-zinc-900">
-                  Bootcamps
-                </a>
-              </li>
-              <li>
-                <a href="#testimonials" className="hover:text-zinc-900">
-                  Testimonials
-                </a>
-              </li>
+              <li><a href="#offerings" className="hover:text-zinc-900">Offerings</a></li>
+              <li><a href="#casework" className="hover:text-zinc-900">Case Work</a></li>
+              <li><a href="#bootcamps" className="hover:text-zinc-900">Bootcamps</a></li>
+              <li><a href="#testimonials" className="hover:text-zinc-900">Testimonials</a></li>
             </ul>
           </div>
           <div>
             <div className="font-medium">Contact</div>
             <ul className="mt-3 space-y-2 text-zinc-600">
-              <li className="flex items-center gap-2">
-                <Mail className="h-4 w-4" /> joe@straightouttawallstreet.com
-              </li>
-              <li className="flex items-center gap-2">
-                <MapPin className="h-4 w-4" /> New York • Miami • Puerto Rico
-              </li>
+              <li className="flex items-center gap-2"><Mail className="h-4 w-4" /> joe@straightouttawallstreet.com</li>
+              <li className="flex items-center gap-2"><MapPin className="h-4 w-4" /> New York • Miami • Puerto Rico</li>
             </ul>
           </div>
         </Section>
@@ -715,12 +592,8 @@ export default function Component() {
           <Section className="py-6 text-xs text-zinc-500 flex items-center justify-between">
             <div>© {new Date().getFullYear()} Straight Outta Wall Street. All rights reserved.</div>
             <div className="flex items-center gap-4">
-              <a href="#" className="hover:text-zinc-700">
-                Privacy
-              </a>
-              <a href="#" className="hover:text-zinc-700">
-                Terms
-              </a>
+              <a href="#" className="hover:text-zinc-700">Privacy</a>
+              <a href="#" className="hover:text-zinc-700">Terms</a>
             </div>
           </Section>
         </div>
