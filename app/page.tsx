@@ -525,6 +525,7 @@ export default function Component() {
       </Section>
 
       {/* About (fixed aspect + top focus) */}
+{/* About (portrait image + top anchor) */}
 <Section id="about" className="py-14">
   <div className="grid md:grid-cols-2 gap-10 items-center">
     <div>
@@ -544,21 +545,20 @@ export default function Component() {
       </ul>
     </div>
 
-    {/* Founder photo — portrait aspect + top anchor */}
+    {/* Founder photo */}
     <Card className="overflow-hidden">
-      <div className="relative w-full aspect-[4/5]"> {/* was aspect-[4/3] */}
-        <Image
-          src="/headshot.jpg"
+      <div className="relative w-full aspect-[4/5]">
+        <img
+          src="/headshot.jpg"  /* your uploaded file in /public */
           alt="Founder of Straight Outta Wall Street"
-          fill
-          className="object-cover object-top"       {/* add object-top to keep hair in frame */}
-          priority
-          sizes="(max-width: 768px) 100vw, 50vw"
+          className="absolute inset-0 h-full w-full object-cover object-top"
+          loading="eager"
         />
       </div>
     </Card>
   </div>
 </Section>
+
 
       {/* Contact */}
       <Section id="contact" className="py-16">
