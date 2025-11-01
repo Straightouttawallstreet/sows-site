@@ -548,7 +548,7 @@ export default function Component() {
     <div className="flex justify-center md:justify-end">
       <div className="relative w-3/4 md:w-2/3 max-w-sm aspect-[4/5]">
         <img
-          src="/032-O9ccK7pZU_s.jpeg"
+          src="/headshot.jpg"
           alt="Founder of Straight Outta Wall Street"
           className="absolute inset-0 h-full w-full object-cover object-top rounded-2xl"
           loading="eager"
