@@ -1,94 +1,11 @@
 {
   "redirects": [
-    {
-      "source": "/about",
-      "destination": "/#about",
-      "permanent": true
-    },
-    {
-      "source": "/joseph-ali",
-      "destination": "/#about",
-      "permanent": true
-    },
-    {
-      "source": "/bio",
-      "destination": "/#about",
-      "permanent": true
-    },
-    {
-      "source": "/financial-training",
-      "destination": "/#training",
-      "permanent": true
-    },
-    {
-      "source": "/training",
-      "destination": "/#training",
-      "permanent": true
-    },
-    {
-      "source": "/services",
-      "destination": "/#training",
-      "permanent": true
-    },
-    {
-      "source": "/workshops",
-      "destination": "/#training",
-      "permanent": true
-    },
-    {
-      "source": "/contact",
-      "destination": "/#contact",
-      "permanent": true
-    },
-    {
-      "source": "/contact-us",
-      "destination": "/#contact",
-      "permanent": true
-    },
-    {
-      "source": "/get-in-touch",
-      "destination": "/#contact",
-      "permanent": true
-    },
-    {
-      "source": "/testimonials",
-      "destination": "/#reviews",
-      "permanent": true
-    },
-    {
-      "source": "/reviews",
-      "destination": "/#reviews",
-      "permanent": true
-    },
-    {
-      "source": "/lbo-models",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/m-and-a",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/valuation",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/3-statement-models",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/faq",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/blog",
-      "destination": "/",
-      "permanent": true
-    }
+    { "source": "/about", "destination": "/", "permanent": true },
+    { "source": "/about-8", "destination": "/", "permanent": true },
+    { "source": "/business-advisory", "destination": "/", "permanent": true },
+    { "source": "/financial-training", "destination": "/", "permanent": true },
+    { "source": "/contact", "destination": "/", "permanent": true },
+    { "source": "/joseph-ali", "destination": "/", "permanent": true },
+    { "source": "/reviews", "destination": "/", "permanent": true }
   ]
 }
