@@ -164,6 +164,16 @@ diligence Q&A became straightforward instead of defensive.`,
     full: `Tighter bridges, clearer comps logic, and faster revision cycles. Learned how to pre-empt
 IC questions and show my work without clutter.`,
   },
+  {
+    role: "PE Associate → VP",
+    who: "Client L — NYC — 01/20/26",
+    quote: "Changed the trajectory of my career / let alone life.",
+    full: `Needed help reviewing basic fundamentals, got me up to speed in <10 hours. Worked through very advanced new concepts 
+    (extremely specific to PE and knew them inside and out), has helped me gain the confidence back I've lost in the industry and 
+    now am more confident than ever. Has been there with me every step of the way in my recruiting process, from models to case studies to vent sessions
+Extremely responsive and flexible with hours which was extremely helpful for me
+I can't even explain how life-changing this was but I plan to continue to use for the rest of my career on a very frequent basis `,
+  },
 ];
 
 /* ---------- Page ---------- */
