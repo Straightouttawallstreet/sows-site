@@ -303,7 +303,7 @@ export default function Component() {
             <div className="absolute inset-0 bg-zinc-950/80 sm:hidden" />
             <div className="absolute inset-y-0 left-0 hidden w-[58%] bg-zinc-950 sm:block" />
             <div className="absolute inset-y-0 left-[58%] hidden w-[10%] bg-gradient-to-r from-zinc-950 to-transparent sm:block" />
-            <div className="relative z-10 flex h-full max-w-lg flex-col sm:max-w-[50%]">
+            <div className="relative z-10 flex h-full max-w-lg flex-col sm:max-w-[44%]">
               <div className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-300">
                 For Business Owners
               </div>
