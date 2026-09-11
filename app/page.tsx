@@ -195,7 +195,7 @@ export default function Component() {
           </a>
 
           <nav className="hidden md:flex items-center gap-8 text-sm">
-            <a href="#offerings" className="hover:text-zinc-900 text-zinc-600">Offerings</a>
+            <a href="#owners" className="hover:text-zinc-900 text-zinc-600">Owner Advisory</a>
             <a href="#casework" className="hover:text-zinc-900 text-zinc-600">Case Work</a>
             <a href="#bootcamps" className="hover:text-zinc-900 text-zinc-600">Bootcamps</a>
             <a href="#testimonials" className="hover:text-zinc-900 text-zinc-600">Testimonials</a>
@@ -216,8 +216,8 @@ export default function Component() {
             Straight Outta Wall Street
           </h1>
           <p className="mt-3 text-zinc-600 text-lg">
-            Two ways to work with us—train for speed and clarity, or ship real work under real
-            deadlines.
+            Three ways to work with us—advise the owner, execute the deal, or train for speed and
+            clarity.
           </p>
 
           <motion.div
@@ -247,60 +247,82 @@ export default function Component() {
           </motion.div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 mt-10">
-          {/* Training */}
+        <div id="owners" className="grid lg:grid-cols-[1.15fr_0.85fr] gap-6 mt-10">
+          {/* Business owners */}
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="rounded-2xl border border-zinc-200 bg-zinc-900 text-white p-7 shadow-sm"
+            className="relative min-h-[520px] overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900 text-white p-7 shadow-sm sm:p-9"
           >
-            <h2 className="text-3xl font-semibold">Train like a Top-Bucket Analyst</h2>
-            <p className="mt-3 text-zinc-300">
-              Live modeling bootcamps and 1:1 coaching that shortcut 100+ hours of self-study. Clean
-              builds, repeatable checks, and explanations that stick.
-            </p>
-            <ul className="mt-5 space-y-2 text-sm text-zinc-200">
-              <li className="flex gap-2">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" /> 3-statement → FCF without breakage
-              </li>
-              <li className="flex gap-2">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" /> LBO from scratch + sensitivities
-              </li>
-              <li className="flex gap-2">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" /> Interview drills & case walk-throughs
-              </li>
-            </ul>
-            <div className="mt-6 flex gap-3">
-              <a href="#bootcamps" className="rounded-xl bg-white text-zinc-900 px-5 py-2 font-medium">Explore Training</a>
-              <a href="#contact" className="rounded-xl ring-1 ring-zinc-600 px-5 py-2">Book intro</a>
+            <img
+              src="/headshot.jpg"
+              alt="Joseph Ali, Founder — Straight Outta Wall Street"
+              className="absolute inset-y-0 right-0 h-full w-[58%] object-cover object-top opacity-90"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/95 to-zinc-950/10" />
+            <div className="relative z-10 flex h-full max-w-md flex-col">
+              <div className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-300">
+                For Business Owners
+              </div>
+              <h2 className="mt-4 text-4xl font-semibold tracking-tight">Advise the Owner</h2>
+              <p className="mt-4 text-lg leading-7 text-zinc-200">
+                Confidential M&amp;A and strategic finance advice when you’re considering a sale,
+                evaluating capital, or making a consequential decision.
+              </p>
+              <ul className="mt-6 space-y-3 text-sm text-zinc-200">
+                <li className="flex gap-3"><CheckCircle2 className="h-5 w-5 shrink-0" /> Business valuation &amp; exit readiness</li>
+                <li className="flex gap-3"><CheckCircle2 className="h-5 w-5 shrink-0" /> Capital and transaction strategy</li>
+                <li className="flex gap-3"><CheckCircle2 className="h-5 w-5 shrink-0" /> Senior-led execution from decision to close</li>
+              </ul>
+              <div className="mt-auto flex flex-wrap gap-3 pt-8">
+                <a href="#owner-services" className="rounded-xl bg-white px-5 py-2.5 font-medium text-zinc-900">Explore Owner Advisory</a>
+                <a href="#contact" className="rounded-xl px-5 py-2.5 ring-1 ring-zinc-500">Confidential Conversation</a>
+              </div>
             </div>
           </motion.div>
 
-          {/* Advisory */}
-          <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.05 }}
-            className="rounded-2xl border border-zinc-200 bg-white p-7 shadow-sm"
-          >
-            <h2 className="text-3xl font-semibold">Execute like a Seasoned VP</h2>
-            <p className="mt-3 text-zinc-700">
-              Shadow advisory and live deal execution—from IC memos to sell-side decks—done right,
-              under pressure.
-            </p>
-            <ul className="mt-5 space-y-2 text-sm text-zinc-700">
-              <li className="flex gap-2"><span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" /> Rapid model reviews, tie-outs, sweeps</li>
-              <li className="flex gap-2"><span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" /> KPIs/exhibits: clean pages for partners/IC</li>
-              <li className="flex gap-2"><span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400" /> Diligence prep, Q&A, timeline management</li>
-            </ul>
-            <div className="mt-6 flex gap-3">
-              <a href="#offerings" className="rounded-xl bg-zinc-900 text-white px-5 py-2 font-medium">Explore Advisory</a>
-              <a href="#contact" className="rounded-xl ring-1 ring-zinc-300 px-5 py-2">Talk to us</a>
-            </div>
-          </motion.div>
+          <div className="grid gap-6">
+            {/* Training */}
+            <motion.div
+              initial={{ opacity: 0, x: 24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.05 }}
+              className="rounded-2xl border border-zinc-200 bg-white p-7 shadow-sm"
+            >
+              <div className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500">For Finance Professionals</div>
+              <h2 className="mt-3 text-2xl font-semibold">Train like a Top-Bucket Analyst</h2>
+              <p className="mt-3 text-zinc-700">
+                Live modeling bootcamps and 1:1 coaching that shortcut 100+ hours of self-study.
+              </p>
+              <div className="mt-5 flex flex-wrap gap-3">
+                <a href="#bootcamps" className="rounded-xl bg-zinc-900 px-5 py-2 font-medium text-white">Explore Training</a>
+                <a href="#contact" className="rounded-xl px-5 py-2 ring-1 ring-zinc-300">Book intro</a>
+              </div>
+            </motion.div>
+
+            {/* Deal teams */}
+            <motion.div
+              initial={{ opacity: 0, x: 24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="rounded-2xl border border-zinc-200 bg-white p-7 shadow-sm"
+            >
+              <div className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500">For Deal Teams</div>
+              <h2 className="mt-3 text-2xl font-semibold">Execute like a Seasoned VP</h2>
+              <p className="mt-3 text-zinc-700">
+                Shadow advisory and live deal execution—from IC memos to sell-side decks—done right,
+                under pressure.
+              </p>
+              <div className="mt-5 flex flex-wrap gap-3">
+                <a href="#offerings" className="rounded-xl bg-zinc-900 px-5 py-2 font-medium text-white">Explore Advisory</a>
+                <a href="#contact" className="rounded-xl px-5 py-2 ring-1 ring-zinc-300">Talk to us</a>
+              </div>
+            </motion.div>
+          </div>
         </div>
 
         <div className="mt-10 grid grid-cols-3 gap-6">
@@ -330,7 +352,18 @@ export default function Component() {
             Choose one path—or blend them. Everything is live, tailored, and focused on output quality under real-world timelines.
           </p>
         </div>
-        <div className="mt-8 grid md:grid-cols-3 gap-6">
+        <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <Card className="p-6">
+            <div id="owner-services" className="flex items-center gap-3"><Building2 className="h-5 w-5" /><h3 className="font-medium">Owner M&amp;A &amp; Strategic Finance</h3></div>
+            <p className="mt-3 text-sm text-zinc-600">
+              Senior-level advice for owners evaluating a sale, capital raise, acquisition, or other consequential strategic decision.
+            </p>
+            <ul className="mt-4 space-y-2 text-sm">
+              {["Valuation & exit readiness","Capital and transaction strategy","Decision support through execution"].map((t, i) => (
+                <li key={i} className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-emerald-600" />{t}</li>
+              ))}
+            </ul>
+          </Card>
           <Card className="p-6">
             <div className="flex items-center gap-3"><BookOpen className="h-5 w-5" /><h3 className="font-medium">1:1 Modeling Bootcamps</h3></div>
             <p className="mt-3 text-sm text-zinc-600">
@@ -486,12 +519,13 @@ export default function Component() {
       <Badge>Built by a practicing banker</Badge>
       <h2 className="mt-3 text-3xl font-semibold tracking-tight">Built for the desk, not the classroom</h2>
       <p className="mt-3 text-zinc-700 leading-7">
-        Straight Outta Wall Street is a boutique training and advisory partner led by a practicing banker.
-        We live in the models and the memos—then teach you to do the same. Sessions are live, discrete, and
-        built to ship real work under real deadlines. You leave with frameworks you can reuse—not templates to copy.
+        Straight Outta Wall Street is a boutique advisory and training partner led by a practicing banker.
+        We advise business owners facing consequential financial decisions, support deal teams under real
+        deadlines, and train finance professionals to execute with clarity. Every engagement is senior-led,
+        tailored, and grounded in real transaction experience.
       </p>
       <ul className="mt-4 space-y-2 text-sm text-zinc-700">
-        <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> MD-level coaching — no juniors, no filler</li>
+        <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> Senior-level attention — no handoff to junior staff</li>
         <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> 10h to core fluency in 3-statement, LBO, case execution</li>
         <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> Live reps, checks, and tie-outs that never break</li>
         <li className="flex items-center gap-2"><Shield className="h-4 w-4" /> Partner-clean exhibits and IC-ready narrative</li>
@@ -527,13 +561,13 @@ export default function Component() {
         <Card className="p-6 md:p-8">
           <div className="grid md:grid-cols-2 gap-8 items-start">
             <div>
-              <h2 className="text-2xl font-semibold tracking-tight">Book an intro call</h2>
+              <h2 className="text-2xl font-semibold tracking-tight">Start a confidential conversation</h2>
               <p className="mt-2 text-zinc-600">
-                Tell us your goals and timeline. We’ll recommend the fastest path and share sample materials.
+                Tell us what you’re evaluating and your timeline. We’ll identify the most useful next step.
               </p>
               <div className="mt-6 space-y-3 text-sm">
                 <div className="flex items-center gap-2"><Calendar className="h-4 w-4" /> 30-minute Zoom or Meet</div>
-                <div className="flex items-center gap-2"><Building2 className="h-4 w-4" /> Firms & individuals welcome</div>
+                <div className="flex items-center gap-2"><Building2 className="h-4 w-4" /> Business owners, firms &amp; individuals welcome</div>
                 <div className="flex items-center gap-2"><Shield className="h-4 w-4" /> NDA-friendly, discrete support</div>
               </div>
               <div className="mt-6 flex items-center gap-4 text-sm">
@@ -549,7 +583,7 @@ export default function Component() {
             <form className="space-y-4" onSubmit={onSubmit}>
               <div>
                 <label className="text-sm text-zinc-700">Name</label>
-                <input name="name" className="mt-1 w-full rounded-xl border border-zinc-300 px-3 py-2 focus:outline-none focus:ring-4 focus:ring-zinc-200" placeholder="Jane Analyst" required />
+                <input name="name" className="mt-1 w-full rounded-xl border border-zinc-300 px-3 py-2 focus:outline-none focus:ring-4 focus:ring-zinc-200" placeholder="Your name" required />
               </div>
               <div>
                 <label className="text-sm text-zinc-700">Email</label>
@@ -558,6 +592,9 @@ export default function Component() {
               <div>
                 <label className="text-sm text-zinc-700">What do you need help with?</label>
                 <select name="need" className="mt-1 w-full rounded-xl border border-zinc-300 px-3 py-2 bg-white focus:outline-none focus:ring-4 focus:ring-zinc-200">
+                  <option>Sell-side / M&amp;A advisory</option>
+                  <option>Capital strategy</option>
+                  <option>Strategic finance / CFO advisory</option>
                   <option>Modeling bootcamp</option>
                   <option>Live deal advisory</option>
                   <option>Interview / case prep</option>
@@ -573,7 +610,7 @@ export default function Component() {
                 <label className="text-sm text-zinc-700">Message</label>
                 <textarea name="message" className="mt-1 w-full rounded-xl border border-zinc-300 px-3 py-2 focus:outline-none focus:ring-4 focus:ring-zinc-200" rows={4} placeholder="Anything else?" />
               </div>
-              <button type="submit" className="w-full rounded-2xl bg-zinc-900 px-5 py-3 text-white shadow hover:bg-zinc-800">Request intro</button>
+              <button type="submit" className="w-full rounded-2xl bg-zinc-900 px-5 py-3 text-white shadow hover:bg-zinc-800">Request a confidential conversation</button>
               <p className="text-xs text-zinc-500">By submitting, you agree to be contacted. No spam—ever.</p>
             </form>
           </div>
@@ -587,7 +624,7 @@ export default function Component() {
             <div className="flex items-center gap-2 font-semibold">
               <img src="/sows-logo.png" alt="SOWS" className="h-7 w-auto" /> Straight Outta Wall Street
             </div>
-            <p className="mt-3 text-zinc-600">Elite training and on-demand deal support for IB & PE professionals.</p>
+            <p className="mt-3 text-zinc-600">M&amp;A advisory, strategic finance, and elite execution support for owners and finance professionals.</p>
           </div>
           <div>
             <div className="font-medium">Quick links</div>

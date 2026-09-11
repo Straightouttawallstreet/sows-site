@@ -10,7 +10,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <title>Straight Outta Wall Street</title>
         <meta
           name="description"
-          content="On-demand modeling, deal coaching & interview mastery."
+          content="M&A advisory, strategic finance, live deal support, and elite financial training for business owners and finance professionals."
         />
       </head>
       <body>
