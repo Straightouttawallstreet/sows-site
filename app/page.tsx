@@ -225,9 +225,9 @@ export default function Component() {
       {/* Header */}
       <header className="sticky top-0 z-40 bg-white/70 backdrop-blur border-b border-zinc-200">
         <Section className="flex h-16 items-center justify-between">
-          <a href="#home" className="flex items-center gap-2 font-semibold tracking-tight">
-            <img src="/sows-logo.png" alt="Straight Outta Wall Street" className="h-7 w-auto" />
-            <span className="sr-only">Straight Outta Wall Street</span>
+          <a href="#home" className="flex items-center gap-3 font-semibold tracking-tight">
+            <img src="/sows-logo.png" alt="Straight Outta Wall Street" className="h-9 w-auto" />
+            <span className="hidden text-sm sm:inline">Straight Outta Wall Street</span>
           </a>
 
           <nav className="hidden md:flex items-center gap-8 text-sm">
@@ -240,7 +240,7 @@ export default function Component() {
 
           <div className="flex items-center gap-3">
             <a href="#contact" className="hidden sm:inline-block text-sm">Contact</a>
-            <CTAButton href="#contact">Book an intro call</CTAButton>
+            <CTAButton href="#contact">Schedule a confidential call</CTAButton>
           </div>
         </Section>
       </header>
@@ -248,12 +248,15 @@ export default function Component() {
       {/* Hero */}
       <Section id="home" className="pt-16 pb-10 sm:pt-24 sm:pb-16">
         <div className="max-w-5xl">
-          <h1 className="text-4xl sm:text-5xl font-semibold leading-tight tracking-tight">
+          <div className="text-sm font-medium uppercase tracking-[0.18em] text-zinc-500">
             Straight Outta Wall Street
+          </div>
+          <h1 className="mt-3 text-4xl sm:text-5xl font-semibold leading-tight tracking-tight">
+            Senior-led advice for consequential financial decisions.
           </h1>
           <p className="mt-3 text-zinc-600 text-lg">
-            Three ways to work with us—advise the owner, execute the deal, or train for speed and
-            clarity.
+            M&amp;A and strategic finance for business owners—plus live execution support and
+            technical upskilling for finance professionals.
           </p>
 
           <motion.div
@@ -295,16 +298,16 @@ export default function Component() {
             <img
               src="/headshot.jpg"
               alt="Joseph Ali, Founder — Straight Outta Wall Street"
-              className="absolute inset-y-0 right-0 h-full w-full object-cover object-top opacity-30 sm:w-[54%] sm:opacity-100"
+              className="absolute inset-y-0 right-0 h-full w-full object-cover object-top opacity-35 sm:w-[54%] sm:opacity-100 sm:brightness-[1.03] sm:saturate-[0.96]"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/95 via-[52%] to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 from-[0%] via-zinc-950/95 via-[42%] to-transparent to-[68%]" />
             <div className="relative z-10 flex h-full max-w-lg flex-col sm:max-w-[54%]">
               <div className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-300">
                 For Business Owners
               </div>
-              <h2 className="mt-4 text-4xl font-semibold tracking-tight">Advise the Owner</h2>
+              <h2 className="mt-4 text-4xl font-semibold tracking-tight">Your M&amp;A &amp; Strategic Finance Advisor</h2>
               <p className="mt-4 text-lg leading-7 text-zinc-200">
-                Confidential M&amp;A and strategic finance advice when you’re considering a sale,
+                Confidential, senior-led advice when you’re considering a sale,
                 evaluating capital, or making a consequential decision.
               </p>
               <ul className="mt-6 space-y-3 text-sm text-zinc-200">
@@ -314,7 +317,7 @@ export default function Component() {
               </ul>
               <div className="mt-auto flex flex-wrap gap-3 pt-8">
                 <a href="#owner-services" className="rounded-xl bg-white px-5 py-2.5 font-medium text-zinc-900">Explore Owner Advisory</a>
-                <a href="#contact" className="rounded-xl px-5 py-2.5 ring-1 ring-zinc-500">Confidential Conversation</a>
+                <a href="#contact" className="rounded-xl px-5 py-2.5 ring-1 ring-zinc-500">Schedule a Confidential Call</a>
               </div>
             </div>
           </motion.div>
@@ -362,7 +365,7 @@ export default function Component() {
         </div>
 
         <div className="mt-10 grid grid-cols-3 gap-6">
-          <Stat value="$10B+" label="live-deal experience advised" />
+          <Stat value="$10B+" label="transaction experience" />
           <Stat value="100+" label="placements & promotions" />
           <Stat value="10h" label="to core fluency" />
         </div>
@@ -412,7 +415,30 @@ export default function Component() {
           </Card>
         </div>
         <div className="mt-6">
-          <CTAButton href="#contact">Request a confidential conversation</CTAButton>
+          <CTAButton href="#contact">Discuss your situation</CTAButton>
+        </div>
+      </Section>
+
+      {/* Casework */}
+      <Section id="casework" className="py-14">
+        <div className="max-w-3xl"><h2 className="text-3xl font-semibold tracking-tight">Recent work &amp; outcomes</h2></div>
+        <div className="mt-8 grid md:grid-cols-3 gap-6">
+          {[
+            { title: "Healthcare services sell-side", bullets: ["CIM & model overhaul","KPIs/bridges clarified","Buyer list & IC pages"], tag: "Sell-Side Advisory" },
+            { title: "Special-sits pitch support", bullets: ["Bull/bear-case sensitivities","Reg & probe timeline exhibit","Thesis one-pager"], tag: "Public Markets / HF" },
+            { title: "University bootcamps", bullets: ["SOWS syllabus","LBO in 4 sessions","Live comps & Q&A"], tag: "Education" },
+          ].map((c, i) => (
+            <Card key={i} className="p-6">
+              <div className="text-xs mb-2 inline-flex items-center gap-2 rounded-full bg-zinc-100 px-2 py-1"><Layers3 className="h-3 w-3" /> {c.tag}</div>
+              <h3 className="font-medium leading-snug">{c.title}</h3>
+              <ul className="mt-3 space-y-2 text-sm text-zinc-600">
+                {c.bullets.map((b, bi) => (
+                  <li key={bi} className="flex gap-2"><div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-zinc-400" /> {b}</li>
+                ))}
+              </ul>
+              <div className="mt-4 flex items-center text-sm"><div className="flex items-center gap-2 text-emerald-700"><Gauge className="h-4 w-4" /> Selected engagement</div></div>
+            </Card>
+          ))}
         </div>
       </Section>
 
@@ -454,29 +480,6 @@ export default function Component() {
               ))}
             </ul>
           </Card>
-        </div>
-      </Section>
-
-      {/* Casework */}
-      <Section id="casework" className="py-14">
-        <div className="max-w-3xl"><h2 className="text-3xl font-semibold tracking-tight">Recent work & outcomes</h2></div>
-        <div className="mt-8 grid md:grid-cols-3 gap-6">
-          {[
-            { title: "Healthcare services sell-side", bullets: ["CIM & model overhaul","KPIs/bridges clarified","Buyer list & IC pages"], tag: "Sell-Side Advisory" },
-            { title: "Special-sits pitch support", bullets: ["Bull/bear-case sensitivities","Reg & probe timeline exhibit","Thesis one-pager"], tag: "Public Markets / HF" },
-            { title: "University bootcamps", bullets: ["SOWS syllabus","LBO in 4 sessions","Live comps & Q&A"], tag: "Education" },
-          ].map((c, i) => (
-            <Card key={i} className="p-6">
-              <div className="text-xs mb-2 inline-flex items-center gap-2 rounded-full bg-zinc-100 px-2 py-1"><Layers3 className="h-3 w-3" /> {c.tag}</div>
-              <h3 className="font-medium leading-snug">{c.title}</h3>
-              <ul className="mt-3 space-y-2 text-sm text-zinc-600">
-                {c.bullets.map((b, bi) => (
-                  <li key={bi} className="flex gap-2"><div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-zinc-400" /> {b}</li>
-                ))}
-              </ul>
-              <div className="mt-4 flex items-center text-sm"><div className="flex items-center gap-2 text-emerald-700"><Gauge className="h-4 w-4" /> Measurable uplift</div></div>
-            </Card>
-          ))}
         </div>
       </Section>
 
