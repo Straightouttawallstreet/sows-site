@@ -296,12 +296,14 @@ export default function Component() {
             className="relative min-h-[520px] overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900 text-white p-7 shadow-sm sm:p-9"
           >
             <img
-              src="/headshot.jpg"
+              src="/headshot-real.jpg"
               alt="Joseph Ali, Founder — Straight Outta Wall Street"
-              className="absolute inset-y-0 right-0 h-full w-full object-cover object-top opacity-35 sm:w-[54%] sm:opacity-100 sm:brightness-[1.03] sm:saturate-[0.96]"
+              className="absolute inset-y-0 right-0 h-full w-full object-cover object-top opacity-35 sm:w-[47%] sm:opacity-100"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 from-[0%] via-zinc-950/95 via-[42%] to-transparent to-[68%]" />
-            <div className="relative z-10 flex h-full max-w-lg flex-col sm:max-w-[54%]">
+            <div className="absolute inset-0 bg-zinc-950/80 sm:hidden" />
+            <div className="absolute inset-y-0 left-0 hidden w-[58%] bg-zinc-950 sm:block" />
+            <div className="absolute inset-y-0 left-[58%] hidden w-[10%] bg-gradient-to-r from-zinc-950 to-transparent sm:block" />
+            <div className="relative z-10 flex h-full max-w-lg flex-col sm:max-w-[50%]">
               <div className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-300">
                 For Business Owners
               </div>
